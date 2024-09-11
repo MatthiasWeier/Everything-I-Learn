@@ -1,3 +1,4 @@
+# Image Generation Model Testing
 This document outlines a series of creative prompts designed to test the capabilities of image-generating models. The following tests evaluate the models on their ability to handle various use cases, including realistic product visualization, conceptual branding, and fantasy scene illustration.
 
 Each model was tested, and the generated images are assessed below the prompts. Please note that the evaluation is subjective. I encourage you to test the models yourself and form your own opinion.
@@ -20,8 +21,8 @@ For a detailed setup guide, you can follow this tutorial:
 
 I recommend using quantized models, as the image quality difference is minimal, but the speed improvement is significant.
 
-You will find some mistakes from the models. Each model can get fine tuning and example picture training which will enhance the quality of the generated images by a lot. I did not do this here. This is fresh out of the box after the download.  
-If you want to know how it can look after a good amount of fine-tuning check this video:  
+You will find some mistakes from the models. Each model can get fine-tuning and example picture training, which will enhance the quality of the generated images by a lot. I did not do this here. This is fresh out of the box after the download.  
+If you want to know how it can look after a good amount of fine-tuning, check this video:  
 [Flux + Lora Full Course - Photorealistic](https://www.youtube.com/watch?v=1m7ZVCy3728)
 
 ---
@@ -45,11 +46,11 @@ Testing the model's ability to create photorealistic images for product visualiz
 
 | Model                                              | Picture                                                                                 | Time                |
 | -------------------------------------------------- | --------------------------------------------------------------------------------------- | ------------------- |
-| `flux1-dev-bnb-nf4-v2.safetensors`                 | ![Realistic Product Image 1](flux1-dev-bnb-nf4-v2.safetensors/00006-2028289673.png)<br> | 32 seconds          |
-| `flux1-dev-fp8.safetensors`                        | ![[00029-2077053521.png]]                                                               | 3 minutes 4 seconds |
-| `flux1-schnell-bnb-nf4.safetensors`                | ![[00014-3669209174.png]]                                                               | 31 seconds          |
-| `flux1DevV1V2Flux1_flux1SchnellBNBNF4.safetensors` | ![[00017-2409873339.png]]                                                               | 28 seconds          |
-| `realisticVisionV51_v51VAE.safetensors`            | ![[00021-2948220059.png]]                                                               | 76 seconds          |
+| `flux1-dev-bnb-nf4-v2.safetensors`                 | ![Realistic Product Image 1](flux1-dev-bnb-nf4-v2.safetensors/00006-2028289673.png)      | 32 seconds          |
+| `flux1-dev-fp8.safetensors`                        | ![Realistic Product Image 2](flux1-dev-fp8.safetensors/00029-2077053521.png)            | 3 minutes 4 seconds |
+| `flux1-schnell-bnb-nf4.safetensors`                | ![Realistic Product Image 3](flux1-schnell-bnb-nf4.safetensors/00014-3669209174.png)    | 31 seconds          |
+| `flux1DevV1V2Flux1_flux1SchnellBNBNF4.safetensors` | ![Realistic Product Image 4](flux1DevV1V2Flux1_flux1SchnellBNBNF4.safetensors/00017-2409873339.png) | 28 seconds          |
+| `realisticVisionV51_v51VAE.safetensors`            | ![Realistic Product Image 5](realisticVisionV51_v51VAE.safetensors/00021-2948220059.png)| 76 seconds          |
 
 ---
 
@@ -74,10 +75,10 @@ Testing the model's ability to generate abstract conceptual designs for branding
 | Model                                              | Picture                                                                       | Time                 |
 | -------------------------------------------------- | ----------------------------------------------------------------------------- | -------------------- |
 | `flux1-dev-bnb-nf4-v2.safetensors`                 | ![Logo Design Image 1](flux1-dev-bnb-nf4-v2.safetensors/00007-2770545518.png) | 31 seconds           |
-| `flux1-dev-fp8.safetensors`                        | ![[00026-2646332994.png]]                                                     | 3 minutes 15 seconds |
-| `flux1-schnell-bnb-nf4.safetensors`                | ![[00013-645059101.png]]                                                      | 28 seconds           |
-| `flux1DevV1V2Flux1_flux1SchnellBNBNF4.safetensors` | ![[00018-1140581039.png]]                                                     | 22 seconds           |
-| `realisticVisionV51_v51VAE.safetensors`            | ![[00022-935664386.png]]                                                      | 26 seconds           |
+| `flux1-dev-fp8.safetensors`                        | ![Logo Design Image 2](flux1-dev-fp8.safetensors/00026-2646332994.png)        | 3 minutes 15 seconds |
+| `flux1-schnell-bnb-nf4.safetensors`                | ![Logo Design Image 3](flux1-schnell-bnb-nf4.safetensors/00013-645059101.png) | 28 seconds           |
+| `flux1DevV1V2Flux1_flux1SchnellBNBNF4.safetensors` | ![Logo Design Image 4](flux1DevV1V2Flux1_flux1SchnellBNBNF4.safetensors/00018-1140581039.png) | 22 seconds           |
+| `realisticVisionV51_v51VAE.safetensors`            | ![Logo Design Image 5](realisticVisionV51_v51VAE.safetensors/00022-935664386.png) | 26 seconds           |
 
 ---
 
@@ -100,11 +101,11 @@ Testing the model's ability to create detailed fantasy scenes for use in video g
 
 | Model                                              | Picture                   | Time                 |
 | -------------------------------------------------- | ------------------------- | -------------------- |
-| `flux1-dev-bnb-nf4-v2.safetensors`                 | ![[00008-326272213.png]]  | 33 seconds           |
-| `flux1-dev-fp8.safetensors`                        | ![[00027-884559144.png]]  | 3 minutes 12 seconds |
-| `flux1-schnell-bnb-nf4.safetensors`                | ![[00015-3010276471.png]] | 30 seconds           |
-| `flux1DevV1V2Flux1_flux1SchnellBNBNF4.safetensors` | ![[00019-3446098151.png]] | 22 seconds           |
-| `realisticVisionV51_v51VAE.safetensors`            | ![[00023-3400656684.png]] | 25 seconds           |
+| `flux1-dev-bnb-nf4-v2.safetensors`                 | ![Fantasy Scene Image 1](flux1-dev-bnb-nf4-v2.safetensors/00008-326272213.png) | 33 seconds           |
+| `flux1-dev-fp8.safetensors`                        | ![Fantasy Scene Image 2](flux1-dev-fp8.safetensors/00027-884559144.png)        | 3 minutes 12 seconds |
+| `flux1-schnell-bnb-nf4.safetensors`                | ![Fantasy Scene Image 3](flux1-schnell-bnb-nf4.safetensors/00015-3010276471.png) | 30 seconds           |
+| `flux1DevV1V2Flux1_flux1SchnellBNBNF4.safetensors` | ![Fantasy Scene Image 4](flux1DevV1V2Flux1_flux1SchnellBNBNF4.safetensors/00019-3446098151.png) | 22 seconds           |
+| `realisticVisionV51_v51VAE.safetensors`            | ![Fantasy Scene Image 5](realisticVisionV51_v51VAE.safetensors/00023-3400656684.png) | 25 seconds           |
 
 ---
 
@@ -127,11 +128,11 @@ Evaluating the model’s ability to incorporate human figures with custom text o
 
 | Model                                              | Picture                   | Time                 |
 | -------------------------------------------------- | ------------------------- | -------------------- |
-| `flux1-dev-bnb-nf4-v2.safetensors`                 | ![[00009-2414700174.png]] | 31 seconds           |
-| `flux1-dev-fp8.safetensors`                        | ![[00028-2100809403.png]] | 4 minutes 48 seconds |
-| `flux1-schnell-bnb-nf4.safetensors`                | ![[00016-3308591304.png]] | 29 seconds           |
-| `flux1DevV1V2Flux1_flux1SchnellBNBNF4.safetensors` | ![[00020-2963378814.png]] | 23 seconds           |
-| `realisticVisionV51_v51VAE.safetensors`            | ![[00024-4022871480.png]] | 27 seconds           |
+| `flux1-dev-bnb-nf4-v2.safetensors`                 | ![Human with Text Image 1](flux1-dev-bnb-nf4-v2.safetensors/00009-2414700174.png) | 31 seconds           |
+| `flux1-dev-fp8.safetensors`                        | ![Human with Text Image 2](flux1-dev-fp8.safetensors/00028-2100809403.png)        | 4 minutes 48 seconds |
+| `flux1-schnell-bnb-nf4.safetensors`                | ![Human with Text Image 3](flux1-schnell-bnb-nf4.safetensors/00016-3308591304.png) | 29 seconds           |
+| `flux1DevV1V2Flux1_flux1SchnellBNBNF4.safetensors` | ![Human with Text Image 4](flux1DevV1V2Flux1_flux1SchnellBNBNF4.safetensors/00020-2963378814.png) | 23 seconds           |
+| `realisticVisionV51_v51VAE.safetensors`            | ![Human with Text Image 5](realisticVisionV51_v51VAE.safetensors/00024-4022871480.png) | 27 seconds           |
 
 ---
 
