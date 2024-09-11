@@ -20,7 +20,7 @@ One of the most exciting aspects of AI and ML is their ability to **learn** and 
 - **Predictive Analytics 📈**: AI predicts future trends based on past data, revolutionizing finance, marketing, and logistics.
 - **Robotics 🤖**: AI-driven robots can perform complex tasks in manufacturing, healthcare, and even space exploration 🚀.
 
-![[Pasted image 20240911202147.png]]
+![Rule based vs Machine Learning](Pasted%20image%2020240911202147.png)
 ## ⚡ The Rapid Evolution of AI and Machine Learning
 
 AI and ML are rapidly evolving fields. Advancements in algorithms, computational power 💻, and data availability are expanding their capabilities. As the field progresses, expect new applications and more sophisticated AI systems to emerge.
@@ -30,7 +30,7 @@ AI and ML are rapidly evolving fields. Advancements in algorithms, computational
 - **Generative AI 🎨**: Models like GPT or DALL·E generate text, images, and even videos, sparking creativity in fields like content creation and design.
 - **Ethical AI ⚖️**: Ensuring that AI systems are fair, transparent, and free from bias, and addressing ethical concerns in AI development.
 
-![[ai-development-timeline.webp]]
+![ai-development-timeline](ai-development-timeline.webp)
 ## ⚠️ The Dangers and Risks of AI
 
 While AI offers incredible benefits, it also poses significant risks. Its powerful capabilities can be exploited by bad actors, or its use may lead to unintended consequences. Some of the most pressing risks include:
@@ -39,18 +39,18 @@ While AI offers incredible benefits, it also poses significant risks. Its powerf
 - **Autonomous Weapons ⚔️**: AI weaponization raises ethical concerns, especially regarding autonomous military systems.
 - **Bias and Discrimination 🚫**: AI models trained on biased data can perpetuate harmful biases, affecting hiring, law enforcement, and lending.
 - **Job Displacement 🏢**: Automation powered by AI may displace jobs, especially in sectors like manufacturing and customer service.
-![[Pasted image 20240911202353.png]]
+![Pasted image](Pasted%20image%2020240911202353.png)
 
 ## 🧠 Types of AI and Machine Learning
 
 There are several classifications of AI and ML, each with its own characteristics and applications.
 
 ### 🤖 Types of AI
-| **Type of AI**             | **Description**                                                                 |
-|----------------------------|---------------------------------------------------------------------------------|
-| **Narrow AI**               | AI designed to perform a specific task (e.g., facial recognition, language translation). Also known as Weak AI. |
-| **General AI**              | Hypothetical AI that can perform any intellectual task a human can. General AI does not yet exist. |
-| **Superintelligent AI**     | AI that far exceeds human intelligence. This is a theoretical concept and raises ethical concerns. |
+| **Type of AI**          | **Description**                                                                                                 |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **Narrow AI**           | AI designed to perform a specific task (e.g., facial recognition, language translation). Also known as Weak AI. |
+| **General AI**          | Hypothetical AI that can perform any intellectual task a human can. General AI does not yet exist.              |
+| **Superintelligent AI** | AI that far exceeds human intelligence. This is a theoretical concept and raises ethical concerns.              |
 
 ### 🔄 Types of Machine Learning
 | **Type of ML**              | **Description**                                                                                         |

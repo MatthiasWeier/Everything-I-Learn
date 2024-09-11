@@ -44,13 +44,13 @@ Testing the model's ability to create photorealistic images for product visualiz
 - Difficulties with fine reflections
 - Inaccuracies in smaller design elements
 
-| Model                                              | Picture                                                                                 | Time                |
-| -------------------------------------------------- | --------------------------------------------------------------------------------------- | ------------------- |
-| `flux1-dev-bnb-nf4-v2.safetensors`                 | ![Realistic Product Image 1](00006-2028289673.png)      | 32 seconds          |
-| `flux1-dev-fp8.safetensors`                        | ![Realistic Product Image 2](00029-2077053521.png)            | 3 minutes 4 seconds |
-| `flux1-schnell-bnb-nf4.safetensors`                | ![Realistic Product Image 3](00014-3669209174.png)    | 31 seconds          |
-| `flux1DevV1V2Flux1_flux1SchnellBNBNF4.safetensors` | ![Realistic Product Image 4](00017-2409873339.png) | 28 seconds          |
-| `realisticVisionV51_v51VAE.safetensors`            | ![Realistic Product Image 5](00021-2948220059.png)| 7.6 seconds          |
+| Model                                              | Picture                                                        | Time                |
+| -------------------------------------------------- | -------------------------------------------------------------- | ------------------- |
+| `flux1-dev-bnb-nf4-v2.safetensors`                 | ![Realistic Product Image 1](flux1-dev-bnb-nf4-v2.safetensors/00006-2028289673.png) | 32 seconds          |
+| `flux1-dev-fp8.safetensors`                        | ![Realistic Product Image 2](flux1-dev-fp8.safetensors/00029-2077053521.png)        | 3 minutes 4 seconds |
+| `flux1-schnell-bnb-nf4.safetensors`                | ![Realistic Product Image 3](flux1-schnell-bnb-nf4.safetensors/00014-3669209174.png) | 31 seconds          |
+| `flux1DevV1V2Flux1_flux1SchnellBNBNF4.safetensors` | ![Realistic Product Image 4](flux1DevV1V2Flux1_flux1SchnellBNBNF4.safetensors/00017-2409873339.png) | 28 seconds          |
+| `realisticVisionV51_v51VAE.safetensors`            | ![Realistic Product Image 5](realisticVisionV51_v51VAE.safetensors/00021-2948220059.png) | 7.6 seconds         |
 
 ---
 
@@ -72,13 +72,13 @@ Testing the model's ability to generate abstract conceptual designs for branding
 - Lack of originality in abstract designs
 - Coherence in brand messaging
 
-| Model                                              | Picture                                                                       | Time                 |
-| -------------------------------------------------- | ----------------------------------------------------------------------------- | -------------------- |
-| `flux1-dev-bnb-nf4-v2.safetensors`                 | ![Logo Design Image 1](00007-2770545518.png) | 31 seconds           |
-| `flux1-dev-fp8.safetensors`                        | ![Logo Design Image 2](00026-2646332994.png)        | 3 minutes 15 seconds |
-| `flux1-schnell-bnb-nf4.safetensors`                | ![Logo Design Image 3](00013-645059101.png) | 28 seconds           |
-| `flux1DevV1V2Flux1_flux1SchnellBNBNF4.safetensors` | ![Logo Design Image 4](00018-1140581039.png) | 22 seconds           |
-| `realisticVisionV51_v51VAE.safetensors`            | ![Logo Design Image 5](00022-935664386.png) | 2.6 seconds           |
+| Model                                              | Picture                                                        | Time                 |
+| -------------------------------------------------- | -------------------------------------------------------------- | -------------------- |
+| `flux1-dev-bnb-nf4-v2.safetensors`                 | ![Logo Design Image 1](flux1-dev-bnb-nf4-v2.safetensors/00007-2770545518.png) | 31 seconds           |
+| `flux1-dev-fp8.safetensors`                        | ![Logo Design Image 2](flux1-dev-fp8.safetensors/00026-2646332994.png)        | 3 minutes 15 seconds |
+| `flux1-schnell-bnb-nf4.safetensors`                | ![Logo Design Image 3](flux1-schnell-bnb-nf4.safetensors/00013-645059101.png) | 28 seconds           |
+| `flux1DevV1V2Flux1_flux1SchnellBNBNF4.safetensors` | ![Logo Design Image 4](flux1DevV1V2Flux1_flux1SchnellBNBNF4.safetensors/00018-1140581039.png) | 22 seconds           |
+| `realisticVisionV51_v51VAE.safetensors`            | ![Logo Design Image 5](realisticVisionV51_v51VAE.safetensors/00022-935664386.png) | 2.6 seconds          |
 
 ---
 
@@ -99,13 +99,13 @@ Testing the model's ability to create detailed fantasy scenes for use in video g
 - Balance between realism and fantasy
 - Quality of finer details like creatures and textures
 
-| Model                                              | Picture                   | Time                 |
-| -------------------------------------------------- | ------------------------- | -------------------- |
-| `flux1-dev-bnb-nf4-v2.safetensors`                 | ![Fantasy Scene Image 1](00008-326272213.png) | 33 seconds           |
-| `flux1-dev-fp8.safetensors`                        | ![Fantasy Scene Image 2](00027-884559144.png)        | 3 minutes 12 seconds |
-| `flux1-schnell-bnb-nf4.safetensors`                | ![Fantasy Scene Image 3](00015-3010276471.png) | 30 seconds           |
-| `flux1DevV1V2Flux1_flux1SchnellBNBNF4.safetensors` | ![Fantasy Scene Image 4](00019-3446098151.png) | 22 seconds           |
-| `realisticVisionV51_v51VAE.safetensors`            | ![Fantasy Scene Image 5](00023-3400656684.png) | 2.5 seconds           |
+| Model                                              | Picture                                                        | Time                 |
+| -------------------------------------------------- | -------------------------------------------------------------- | -------------------- |
+| `flux1-dev-bnb-nf4-v2.safetensors`                 | ![Fantasy Scene Image 1](flux1-dev-bnb-nf4-v2.safetensors/00008-326272213.png) | 33 seconds           |
+| `flux1-dev-fp8.safetensors`                        | ![Fantasy Scene Image 2](flux1-dev-fp8.safetensors/00027-884559144.png)        | 3 minutes 12 seconds |
+| `flux1-schnell-bnb-nf4.safetensors`                | ![Fantasy Scene Image 3](flux1-schnell-bnb-nf4.safetensors/00015-3010276471.png) | 30 seconds           |
+| `flux1DevV1V2Flux1_flux1SchnellBNBNF4.safetensors` | ![Fantasy Scene Image 4](flux1DevV1V2Flux1_flux1SchnellBNBNF4.safetensors/00019-3446098151.png) | 22 seconds           |
+| `realisticVisionV51_v51VAE.safetensors`            | ![Fantasy Scene Image 5](realisticVisionV51_v51VAE.safetensors/00023-3400656684.png) | 2.5 seconds          |
 
 ---
 
@@ -126,13 +126,13 @@ Evaluating the model’s ability to incorporate human figures with custom text o
 - Issues with text legibility
 - Unnatural distortion of fabric or unrealistic human appearance
 
-| Model                                              | Picture                   | Time                 |
-| -------------------------------------------------- | ------------------------- | -------------------- |
-| `flux1-dev-bnb-nf4-v2.safetensors`                 | ![Human with Text Image 1](00009-2414700174.png) | 31 seconds           |
-| `flux1-dev-fp8.safetensors`                        | ![Human with Text Image 2](00028-2100809403.png)        | 4 minutes 48 seconds |
-| `flux1-schnell-bnb-nf4.safetensors`                | ![Human with Text Image 3](00016-3308591304.png) | 29 seconds           |
-| `flux1DevV1V2Flux1_flux1SchnellBNBNF4.safetensors` | ![Human with Text Image 4](00020-2963378814.png) | 23 seconds           |
-| `realisticVisionV51_v51VAE.safetensors`            | ![Human with Text Image 5](00024-4022871480.png) | 2.7 seconds           |
+| Model                                              | Picture                                                        | Time                 |
+| -------------------------------------------------- | -------------------------------------------------------------- | -------------------- |
+| `flux1-dev-bnb-nf4-v2.safetensors`                 | ![Human with Text Image 1](flux1-dev-bnb-nf4-v2.safetensors/00009-2414700174.png) | 31 seconds           |
+| `flux1-dev-fp8.safetensors`                        | ![Human with Text Image 2](flux1-dev-fp8.safetensors/00028-2100809403.png)        | 4 minutes 48 seconds |
+| `flux1-schnell-bnb-nf4.safetensors`                | ![Human with Text Image 3](flux1-schnell-bnb-nf4.safetensors/00016-3308591304.png) | 29 seconds           |
+| `flux1DevV1V2Flux1_flux1SchnellBNBNF4.safetensors` | ![Human with Text Image 4](flux1DevV1V2Flux1_flux1SchnellBNBNF4.safetensors/00020-2963378814.png) | 23 seconds           |
+| `realisticVisionV51_v51VAE.safetensors`            | ![Human with Text Image 5](realisticVisionV51_v51VAE.safetensors/00024-4022871480.png) | 2.7 seconds          |
 
 ---
 
@@ -145,4 +145,4 @@ Feel free to test these models yourself and adapt the prompts to your needs.
 ---
 
 _Made by: Weier Matthias_  
-_Date: 11.09.2024_  
+_Date: 11.09.2024_

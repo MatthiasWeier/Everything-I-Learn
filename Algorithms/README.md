@@ -2,7 +2,7 @@
 
 ## Introduction
 Algorithms are the backbone of computer science and software engineering. They are step-by-step instructions designed to solve specific computational problems. Efficient algorithms are crucial for optimizing resource usage, improving application performance, and solving complex problems effectively.
-![[Pasted image 20240911200501.png]]
+![What is an Algorithm](Pasted%20image%2020240911200501.png)
 In this document, we will outline the various categories of algorithms, explore why they are essential, and delve into key considerations such as time complexity, space complexity, and algorithm analysis.
 
 ---
@@ -118,7 +118,7 @@ An algorithm is scalable if it continues to perform efficiently as the size of t
 ---
 
 ## Time Complexity Analysis
-![[Pasted image 20240911200414.png]]
+![Time Complexity](Pasted%20image%2020240911200414.png)
 Analyzing the time complexity of an algorithm is crucial to understand its performance characteristics and behavior with increasing input sizes. Below is an example of time complexity for common operations:
 
 | Algorithm Type         | Best Case  | Average Case | Worst Case |

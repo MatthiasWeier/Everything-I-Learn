@@ -1,4 +1,4 @@
-![[Huffman_huff_demo.gif]]
+![GIF](Huffman_huff_demo.gif)
 
 Huffman encoding is a widely used algorithm for **lossless data compression**. It was developed by **David A. Huffman** while he was a Ph.D. student at MIT, and it is known for its efficiency in minimizing the average code length used to represent symbols in a message. Huffman encoding assigns **variable-length codes** to input characters, with shorter codes assigned to more frequent characters. This method ensures that no code is a prefix of any other code, allowing for **unique and unambiguous decoding**.
 
