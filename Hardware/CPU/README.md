@@ -9,13 +9,13 @@ Modern CPUs feature **multicore** setups, which allow for better multitasking an
 The document covers a wide range of CPU characteristics, including **instruction sets** (x86, ARM, x64), the impact of **cache levels (L1-L4)**, power consumption considerations, and performance-enhancing techniques like **overclocking**. Furthermore, it explains the differences between **desktop**, **server**, and **mobile processors** and their specific use cases. 
 
 ## What is a CPU (Central Processing Unit)?
-![CPU AMD vs Intel](Pictures/Pasted%20image%2020240912211252.jpg)
+![CPU AMD vs Intel](Pictures/Pasted%20image%2020240912211252.jpg) <br />
 A **Central Processing Unit (CPU)** is the primary component of a computer responsible for executing instructions from programs by performing basic arithmetic, logic, control, and input/output (I/O) operations. Often referred to as the "brain" of the computer, the CPU plays a crucial role in system performance. It interprets and processes data fetched from memory and provides control to other components of the computer, coordinating operations with memory, storage, and peripherals.
 
 ## 2. CPU Architecture Basics
 
 ### 2.1 Von Neumann Architecture
-![Neumann Architecture](Pictures/Von_Neumann_Architecture.svg)
+![Neumann Architecture](Pictures/Von_Neumann_Architecture.svg) <br />
 The **Von Neumann architecture** is based on a design where the CPU, memory, and I/O share a common bus for transferring data. It uses a single memory space for both instructions (program code) and data, which makes it simpler but prone to bottlenecks due to simultaneous access needs.
 
 Key features:
@@ -24,7 +24,7 @@ Key features:
 - Susceptible to "Von Neumann bottleneck" due to limited bandwidth.
 
 ### 2.2 Harvard Architecture
-![Harvard Architecture](Pictures/Pasted%20image%2020240912211422.png)
+![Harvard Architecture](Pictures/Pasted%20image%2020240912211422.png) <br />
 The **Harvard architecture** splits the memory into two separate areas: one for data and another for instructions. This allows for simultaneous access to instructions and data, improving speed and efficiency. It's more complex but is often used in specialized computing environments (e.g., microcontrollers).
 
 Key features:
@@ -33,7 +33,7 @@ Key features:
 - Used primarily in embedded systems.
 
 ### 3.1 Control Unit (CU)
-![CU](Pictures/Pasted%20image%2020240912211528.png)
+![CU](Pictures/Pasted%20image%2020240912211528.png) <br />
 The **Control Unit (CU)** is the central nervous system of the CPU, responsible for coordinating the execution of instructions and managing the flow of data within the processor. It does not perform actual data processing tasks itself but instead oversees the entire operation, ensuring that the CPU components work together seamlessly.
 
 #### Functions of the Control Unit:
@@ -69,7 +69,7 @@ The CU acts as the director of operations within the CPU, coordinating tasks and
 ---
 
 ### 3.2 Arithmetic Logic Unit (ALU)
-![ALU examples](Pictures/Pasted%20image%2020240912211637.png)
+![ALU examples](Pictures/Pasted%20image%2020240912211637.png) <br />
 The **Arithmetic Logic Unit (ALU)** is the component of the CPU responsible for performing all arithmetic and logical operations. The ALU is often referred to as the "computational engine" of the processor because it directly executes the operations that enable the CPU to process data. While the Control Unit directs the overall operation, the ALU does the actual computation.
 
 #### Functions of the Arithmetic Logic Unit:
@@ -223,7 +223,7 @@ While clock speed is a key factor in determining a CPU’s performance, it is no
 In summary, **clock speed** dictates how fast the CPU processes instructions per second, while **IPC** and other architectural improvements determine how efficiently those instructions are processed during each cycle.
 
 ### 3.5 Cache Levels (L1, L2, L3, L4)
-![CPU Cache Levels](Pictures/Pasted%20image%2020240912201911.png)
+![CPU Cache Levels](Pictures/Pasted%20image%2020240912201911.png) <br />
 **CPU Cache** is a critical component of modern processors, designed to reduce the time taken to access frequently used data from the main memory. The cache is arranged in multiple levels, with each level offering a trade-off between speed and size.
 
 - **L1 Cache**: The fastest and smallest cache (usually up to 64KB), located closest to the CPU cores. It is typically split into instruction cache (I-cache) and data cache (D-cache), each serving specific purposes to fetch instructions and data rapidly.
@@ -237,7 +237,7 @@ In summary, **clock speed** dictates how fast the CPU processes instructions per
 ---
 
 ### What is a CPU made of?
-![Wafer](Pictures/7oebxcbz35t71.webp)
+![Wafer](Pictures/7oebxcbz35t71.webp) <br />
 1. Here’s your content with added emojis for better visualization:
 
 1. **Transistors** ⚙️: The fundamental building blocks of a CPU, transistors act as electronic switches that can turn on and off to perform binary operations (0s and 1s). Billions of transistors are packed into modern CPUs.
