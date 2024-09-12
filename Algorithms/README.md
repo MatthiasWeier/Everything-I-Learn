@@ -69,7 +69,7 @@ These are optimization algorithms that systematically explore the search space b
 Graph algorithms focus on solving problems related to graph theory, such as finding the shortest path or minimum spanning tree. Examples include:
 - **Breadth-First Search (BFS)**
 - **Depth-First Search (DFS)**
-- **A* Algorithm**
+- **A\* Algorithm**
 
 ### 9. **Recursive Algorithms**
 Recursion is the technique of solving a problem where the solution depends on solutions to smaller instances of the same problem. Examples include:
