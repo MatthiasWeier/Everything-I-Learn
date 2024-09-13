@@ -34,7 +34,7 @@ Key features:
 
 ### 3.1 Control Unit (CU)
 ![CU](Pictures/Pasted%20image%2020240912211528.png) <br />
-The **Control Unit (CU)** is the central nervous system of the CPU, responsible for coordinating the execution of instructions and managing the flow of data within the processor. It does not perform actual data processing tasks itself but instead oversees the entire operation, ensuring that the CPU components work together seamlessly.
+The **Control Unit (CU)** is the central nervous system of the CPU, responsible for coordinating the execution of instructions and managing the flow of data within the processor. It does not perform actual data processing tasks itself but instead oversees the entire operation, ensuring that the CPU components work together seamlessly. Think of the CU being a manager, does not help in the actual Operation, but tells who to do what and when.
 
 #### Functions of the Control Unit:
 1. **Instruction Fetching**: 
@@ -221,12 +221,13 @@ Each clock cycle allows the CPU to perform a set of actions, such as fetching an
 While clock speed is a key factor in determining a CPU’s performance, it is not the sole determinant. **Instructions per Clock (IPC)** measures how many instructions a CPU can execute in one clock cycle. A CPU with higher IPC can be more efficient and outperform a CPU with a higher clock speed but lower IPC. Modern CPUs have optimized architectures, such as improved branch prediction and out-of-order execution, which increase IPC.
 
 In summary, **clock speed** dictates how fast the CPU processes instructions per second, while **IPC** and other architectural improvements determine how efficiently those instructions are processed during each cycle.
+Therefore higher clock speed does not equal better performance.
 
 ### 3.5 Cache Levels (L1, L2, L3, L4)
 ![CPU Cache Levels](Pictures/Pasted%20image%2020240912201911.png) <br />
 **CPU Cache** is a critical component of modern processors, designed to reduce the time taken to access frequently used data from the main memory. The cache is arranged in multiple levels, with each level offering a trade-off between speed and size.
 
-- **L1 Cache**: The fastest and smallest cache (usually up to 64KB), located closest to the CPU cores. It is typically split into instruction cache (I-cache) and data cache (D-cache), each serving specific purposes to fetch instructions and data rapidly.
+- **L1 Cache**: The fastest and smallest cache (usually up to 64KB per core), located closest to the CPU cores. It is typically split into instruction cache (I-cache) and data cache (D-cache), each serving specific purposes to fetch instructions and data rapidly.
   
 - **L2 Cache**: Larger (~1MB) and slower than L1, but still significantly faster than main memory (RAM). L2 cache is often shared between pairs of cores in modern processors and stores data that the L1 cache cannot hold.
 
@@ -238,7 +239,6 @@ In summary, **clock speed** dictates how fast the CPU processes instructions per
 
 ### What is a CPU made of?
 ![Wafer](Pictures/7oebxcbz35t71.webp) <br />
-1. Here’s your content with added emojis for better visualization:
 
 1. **Transistors** ⚙️: The fundamental building blocks of a CPU, transistors act as electronic switches that can turn on and off to perform binary operations (0s and 1s). Billions of transistors are packed into modern CPUs.
   
@@ -282,7 +282,7 @@ In summary, **clock speed** dictates how fast the CPU processes instructions per
    - **Cutting**: The wafer is cut into individual dies, each representing a single CPU chip.
    - **Packaging**: Each die is placed in a protective package with electrical contacts (pins or pads) for connecting the CPU to the system.
 
-This manufacturing process involves extreme precision, with circuit elements measured in nanometers (nm). For example, modern CPUs are produced at **7nm** or **5nm** process nodes, allowing billions of transistors to fit onto a single chip. For example a hair is roughly **80.000nm** wide or the layer of sweat and oils left behind when a person touches a surface typically ranges in thickness from about **100 to 1.000 nanometers (nm)**.
+This manufacturing process involves extreme precision, with circuit elements measured in nanometers (nm). For example, modern CPUs are produced at **7nm** or **5nm** (newest models go down to **3nm**)process nodes, allowing billions of transistors to fit onto a single chip. For example a hair is roughly **80.000nm** wide or the layer of sweat and oils left behind when a person touches a surface typically ranges in thickness from about **100 to 1.000 nanometers (nm)**.
 [CPU Manufacturing Process - Branch Education (Insane video quality)](https://www.youtube.com/watch?v=dX9CGRZwD-w)
 ## 4. Instruction Set Architecture (ISA) Basics
 
