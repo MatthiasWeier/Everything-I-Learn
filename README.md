@@ -32,13 +32,14 @@ I’m constantly learning and improving my knowledge in IT, and I’m always exc
 
 ---
 
-## ❗Disclaimer:
+> [!CAUTION]
+> - I use ChatGPT (my own GPT: https://chatgpt.com/g/g-MYdRG6S9E-markdowngpt-for-it-documentation) to create a lot of these documents.
+> - I am still reading through and fact check everything.
+> - Usually I give the GPT a lot of information I already gathered to a topic and it creates me a markdown page. Quite useful, if you want you can try it
+>  - I can't approve you that 100% information in here are correct.
+>   - BUT I give my best to always read through everything multiple times. I also learn with this stuff, if I notice anything wrong I will change it. This will get more over time
 
-- I use ChatGPT (my own GPT: https://chatgpt.com/g/g-MYdRG6S9E-markdowngpt-for-it-documentation) to create a lot of these documents.
-- I am still reading through and fact check everything.
-- Usually I give the GPT a lot of information I already gathered to a topic and it creates me a markdown page. Quite useful, if you want you can try it
-- I can't approve you that 100% information in here are correct.
-- BUT I give my best to always read through everything multiple times. I also learn with this stuff, if I notice anything wrong I will change it. This will get more over time
+
 
 ## 📚 Repository Overview
 
