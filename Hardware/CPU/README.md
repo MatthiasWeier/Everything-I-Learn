@@ -569,7 +569,7 @@ graph TD;
 
 
 ``` mermaid
-   graph TD;
+graph TD;
     Sand[Sand `High Silicon Content`] --> Refining[Silicon Refining];
     Refining --> Melting[Silicon Melting];
     Melting --> Ingot[Ingot Creation `Cylindrical Block`];
@@ -616,6 +616,7 @@ graph TD;
         Cutting;
         Packaging;
     end
+
 ```
 
 This manufacturing process involves extreme precision, with circuit elements measured in nanometers (nm). For example, modern CPUs are produced at **7nm** or **5nm** (newest models go down to **3nm**)process nodes, allowing billions of transistors to fit onto a single chip. For example a hair is roughly **80.000nm** wide or the layer of sweat and oils left behind when a person touches a surface typically ranges in thickness from about **100 to 1.000 nanometers (nm)**.

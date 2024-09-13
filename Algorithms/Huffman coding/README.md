@@ -55,20 +55,22 @@ Consider the string `"beep boop beer!"`.
 
 Initial priority queue:
 
-```plaintext
-[('r', 1), ('!', 1), ('p', 2), ('o', 2), ('b', 3), ('e', 4)]
-```
+```mermaid
+flowchart LR
+    A1[(r, 1)] --> A2[(!, 1)] --> A3[(p, 2)] --> A4[(o, 2)] --> A5[(b, 3)] --> A6[(e, 4)]
 
+```
 ### Build Huffman Tree (B-Tree):
 
-```plaintext
-        (*, 13)
-       /       \
-   (*, 5)      e(4)
-  /     \
-(*, 2)  b(3)
- /  \
-r(1)  !(1)
+```mermaid
+flowchart TD
+    A((13)) --> B((5))
+    A --> E[4]
+    B --> C((2))
+    B --> D[3]
+    C --> F[1]
+    C --> G[1!]
+  
 ```
 
 ### Generate Huffman Codes:

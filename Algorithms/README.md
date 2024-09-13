@@ -2,7 +2,12 @@
 
 ## Introduction
 Algorithms are the backbone of computer science and software engineering. They are step-by-step instructions designed to solve specific computational problems. Efficient algorithms are crucial for optimizing resource usage, improving application performance, and solving complex problems effectively.
-![What is an Algorithm](Pasted%20image%2020240911200501.png)
+```mermaid
+flowchart TD
+    Input[Input\n---\nData or Instructions] --> Algorithm[Algorithm\n---\nSet of steps to accomplish a task or solve a problem]
+    Algorithm --> Output[Output\n---\nSolution or Result]
+
+```
 In this document, we will outline the various categories of algorithms, explore why they are essential, and delve into key considerations such as time complexity, space complexity, and algorithm analysis.
 
 ---
