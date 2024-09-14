@@ -53,6 +53,13 @@ The **CPU** (Central Processing Unit) is the core processing component in a comp
 
 # Essentials
 
+> [!CAUTION]
+> Reading this Article doesn't make you an expert about this topic
+> I am just rewriting information I see on the internet with the help of ChatGPT 
+> I am trying to name as many information as possible but this is not even close to everything
+> Each Headline could deserve an own article this size.
+> I hope you will learn something new while reading this!
+
 ## What is a CPU (Central Processing Unit)?
 
 ![AMD vs Intel](Pictures/Screenshot%202024-09-13%20214455.png)
@@ -539,7 +546,7 @@ graph TD;
 
 ### What is a CPU made of?
 ![Wafer](Pictures/7oebxcbz35t71.webp) <br />
-
+[[VIDEO] How are billions of microchips made from sand?](https://www.youtube.com/watch?v=52GoRYP1les)
 1. **Transistors** ⚙️: The fundamental building blocks of a CPU, transistors act as electronic switches that can turn on and off to perform binary operations (0s and 1s). Billions of transistors are packed into modern CPUs.
   
 2. **Silicon Wafer** 🧪: The substrate on which the entire CPU is built. Silicon is abundant and has excellent semiconductor properties, making it ideal for creating integrated circuits.
