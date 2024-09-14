@@ -54,9 +54,9 @@ The **CPU** (Central Processing Unit) is the core processing component in a comp
 # Essentials
 
 > [!CAUTION]
-> Reading this Article doesn't make you an expert about this topic
-> I am just rewriting information I see on the internet with the help of ChatGPT 
-> I am trying to name as many information as possible but this is not even close to everything
+> Reading this Article doesn't make you an expert about this topic.
+> I am just rewriting information I see on the internet with the help of ChatGPT .
+> I am trying to name as many information as possible but this is not even close to everything.
 > Each Headline could deserve an own article this size.
 > I hope you will learn something new while reading this!
 
@@ -68,24 +68,389 @@ The **CPU** (Central Processing Unit) is the core processing component in a comp
 A Central Processing Unit **(CPU)** is the primary component of a computer responsible for executing instructions from programs by performing basic arithmetic, logic, control, and input/output (I/O) operations. Often referred to as the "brain" of the computer, the CPU plays a crucial role in system performance. It interprets and processes data fetched from memory and provides control to other components of the computer, coordinating operations with memory, storage, and peripherals.
 
 ## 2. CPU Architecture Basics
+[Intel Technology - Architecture All Access - Youtube Playlist](https://www.youtube.com/watch?v=_PELtLdh87Y&list=PL8t1FdN2Tj3ZVAzTY-FvsS0qy-mEfRdoj)
+[Comparing Architectures - Video](https://www.youtube.com/watch?v=FZN6LjuEgdw)
+## 🖥️ 2.1 Von Neumann Architecture: A Detailed Breakdown
 
-### 2.1 Von Neumann Architecture
-![Neumann Architecture](Pictures/Von_Neumann_Architecture.svg) <br />
-The **Von Neumann architecture** is based on a design where the CPU, memory, and I/O share a common bus for transferring data. It uses a single memory space for both instructions (program code) and data, which makes it simpler but prone to bottlenecks due to simultaneous access needs.
+The **Von Neumann architecture** is the foundation of most modern computers, introduced by mathematician **John von Neumann** in 1945. Its design principles, based on the concept of a stored-program computer, have shaped computing as we know it. Let's dive deeper into its components, functionality, and significance in a more engaging way.
 
-Key features:
-- Unified memory for data and instructions.
-- Sequential instruction processing.
-- Susceptible to "Von Neumann bottleneck" due to limited bandwidth.
+![Neumann Architecture](Pictures/Von_Neumann_Architecture.svg)
+<br />
 
-### 2.2 Harvard Architecture
-![Harvard Architecture](Pictures/Pasted%20image%2020240912211422.png) <br />
-The **Harvard architecture** splits the memory into two separate areas: one for data and another for instructions. This allows for simultaneous access to instructions and data, improving speed and efficiency. It's more complex but is often used in specialized computing environments (e.g., microcontrollers).
+---
 
-Key features:
-- Separate storage and signal pathways for data and instructions.
-- Improved speed due to parallelism.
-- Used primarily in embedded systems.
+### 🧠 Core Components of Von Neumann Architecture
+
+| Component          | Function                                                                                  | Description                                                                                         |
+|--------------------|-------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| **Central Processing Unit (CPU)** | Performs data processing and instruction execution. | Contains the ALU for computations and the Control Unit for instruction management. |
+| **Memory (RAM)**    | Stores both program instructions and data.                                                 | Single memory used for both data and instructions, shared between the CPU and other components.     |
+| **Input/Output (I/O)** | Allows interaction with external devices.                                                | Interfaces like keyboards (input) and monitors (output) connect the computer to the outside world.  |
+| **Bus System**      | Facilitates communication between CPU, memory, and I/O devices.                            | Data, address, and control buses enable data transfer and communication across components.          |
+
+---
+
+### 🔄 The Von Neumann Execution Cycle
+
+At the heart of the Von Neumann architecture is its **Fetch-Decode-Execute** cycle. This process repeats continuously, allowing the system to process instructions and manipulate data.
+
+1. **Fetch:** The CPU fetches the next instruction from memory, pointed to by the Program Counter (PC).
+2. **Decode:** The Control Unit decodes the fetched instruction to determine the required operation.
+3. **Execute:** The decoded instruction is executed by sending signals to relevant parts of the CPU (like the ALU) or I/O devices.
+4. **Store (Optional):** If necessary, the result of the executed instruction is stored back in memory.
+
+### 💡 **Quick Note**  
+The **Program Counter (PC)** ensures that instructions are fetched in the correct sequence, unless the current instruction modifies it (as in jumps or loops).
+
+#### 📝 Example
+
+Let’s say we want to add two numbers, stored in memory locations 0x01 and 0x02, and store the result in 0x03. The process follows:
+
+
+Fetch: Load the instruction to ADD from memory.
+Decode: Decode the instruction and identify the memory addresses (0x01, 0x02).
+Execute: Add values at 0x01 and 0x02.
+Store: Save the result into memory address 0x03.
+
+---
+
+### ✅ Advantages of Von Neumann Architecture
+
+| 🔑 Key Advantage           | 💬 Description |
+|----------------------------|----------------|
+| **Simplicity**              | The unified memory design (storing both data and instructions in the same space) simplifies the hardware and makes the architecture easier to implement. |
+| **Flexibility**             | Since instructions are stored in memory, they can be modified or replaced dynamically, enabling programmable systems. |
+| **Wide Adoption**           | Its simplicity has made it the basis for general-purpose computers, meaning most modern devices still follow this architecture. |
+| **Cost Efficiency**         | Shared memory reduces the need for separate storage for instructions and data, lowering manufacturing costs. |
+
+---
+
+### ⚠️ Limitations of Von Neumann Architecture
+
+Despite its advantages, the architecture is not without its downsides, primarily related to performance:
+
+#### 1. **🚨 Von Neumann Bottleneck**
+The CPU and memory are constantly competing for access to the **same bus**, which handles both data and instructions. This creates a bottleneck as the system can only transfer one piece of information at a time—either an instruction or data. As computing tasks grow more complex, this limitation slows down the overall processing speed.
+
+#### 2. **📏 Sequential Processing**
+Because the CPU processes instructions **one at a time**, it can’t naturally handle tasks in parallel, limiting performance in applications requiring concurrency or parallelism, such as modern gaming, AI, or large-scale data processing.
+
+#### 3. **🔄 Shared Memory Conflicts**
+Both data and instructions reside in the same memory space, which can cause conflicts, especially as programs become larger and more complex.
+
+---
+
+### 🛠️ Modern Use and Enhancements
+
+Over time, the original Von Neumann architecture has been enhanced to mitigate some of its inherent limitations:
+
+| Enhancement        | Solution to Limitation                                                                                                       |
+|--------------------|------------------------------------------------------------------------------------------------------------------------------|
+| **Cache Memory**    | By introducing a smaller, faster memory close to the CPU, cache memory minimizes delays caused by the bottleneck.             |
+| **Parallel Processing** | Multicore processors allow computers to execute multiple instructions at the same time, bypassing the sequential nature of the original design. |
+| **Harvard Architecture** | Separates memory for instructions and data, significantly reducing the risk of memory access conflicts.                   |
+
+---
+
+### 📊 Von Neumann Bottleneck in Perspective
+
+Here’s a comparison between the **Von Neumann** and **Harvard Architecture** to illustrate how the bottleneck is alleviated in the latter:
+
+| Architecture        | Instruction Memory                  | Data Memory                          | Performance Impact                                  |
+|---------------------|--------------------------------------|--------------------------------------|----------------------------------------------------|
+| **Von Neumann**      | Shared memory space for both         | Shared memory space for both         | Slower due to competition for memory access        |
+| **Harvard**          | Separate memory for instructions     | Separate memory for data             | Faster due to simultaneous memory access           |
+
+---
+
+### 🎯 Key Takeaways
+
+- **The Fetch-Decode-Execute Cycle** forms the backbone of how Von Neumann systems operate.
+- **Unified Memory Model** allows the same memory to store both data and instructions, simplifying the system's design.
+- The **Von Neumann bottleneck** is a major limitation of this architecture, but modern systems mitigate this through techniques like caching and parallelism.
+  
+---
+
+### 🖼️ Mermaid Diagram: Visual Representation
+
+```mermaid
+graph TD
+    CPU -->|Control Signals| Memory
+    CPU -->|Data| Memory
+    Memory -->|Instructions/Data| CPU
+    CPU -->|Control Signals| IO
+    IO -->|Data| CPU
+    subgraph CPU
+        ALU --> CU
+    end
+```
+
+In the diagram above, you can see how the CPU communicates with the memory and I/O devices. The **Control Unit** (CU) manages signals, while the **Arithmetic Logic Unit** (ALU) performs computations.
+
+---
+
+## 🖥️ 2.2 Harvard Architecture: A Detailed Breakdown
+![Harvard Architecture](Pictures/Pasted%20image%2020240912211422.png)
+<br />
+
+The **Harvard architecture** is an alternative computer architecture model that differs from the Von Neumann architecture by having **separate memory spaces** for program instructions and data. This design reduces the contention between the CPU and memory, allowing for more efficient data throughput and improved system performance.
+
+The architecture was initially developed for the **Harvard Mark I** computer in the 1940s. Let’s explore the components, benefits, limitations, and modern use of the Harvard architecture in detail.
+
+---
+
+### 🧠 Core Components of Harvard Architecture
+
+| Component          | Function                                                                                  | Description                                                                                         |
+|--------------------|-------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| **Central Processing Unit (CPU)** | Performs data processing and instruction execution. | Similar to Von Neumann, the CPU houses the Arithmetic Logic Unit (ALU) and Control Unit (CU). |
+| **Instruction Memory** | Stores the program instructions.                                                       | Dedicated memory area for program code only, separated from data memory, reducing memory conflicts.  |
+| **Data Memory**     | Stores the actual data that is being processed.                                            | Separate memory area for data, ensuring that instruction fetches do not interfere with data transfers. |
+| **Input/Output (I/O) Devices** | Allows interaction with external devices.                                                | Interfaces like keyboards (input) and monitors (output) connect the computer to external systems. |
+| **Bus System**      | Facilitates communication between CPU, instruction memory, data memory, and I/O devices.   | Separate buses for data and instructions to enhance speed and efficiency in memory access.          |
+
+---
+
+### 🔄 The Harvard Architecture Execution Cycle
+
+In the Harvard architecture, the **Fetch-Decode-Execute** cycle operates similarly to the Von Neumann architecture but with enhanced efficiency due to separate instruction and data paths.
+
+1. **Fetch (Instruction Memory):** The control unit fetches the instruction from **instruction memory**.
+2. **Decode:** The fetched instruction is decoded by the control unit to determine the operation to perform.
+3. **Fetch (Data Memory):** If the instruction requires data (e.g., for a computation), the control unit fetches it from **data memory**.
+4. **Execute:** The instruction is executed by the CPU, and the result may be written back to data memory if necessary.
+
+### 💡 **Quick Note**  
+The **separation of memory** allows the CPU to access instructions and data simultaneously, greatly improving processing speed and reducing memory access conflicts.
+
+#### 📝 Example
+
+Let’s look at the same example from Von Neumann—adding two numbers stored in memory locations 0x01 and 0x02, and storing the result in 0x03. With Harvard architecture:
+
+Fetch Instruction (Instruction Memory): Load the ADD instruction from instruction memory.
+Decode Instruction: Identify memory addresses in data memory (0x01, 0x02).
+Fetch Data (Data Memory): Load data from 0x01 and 0x02 in data memory.
+Execute: Add the data and store the result in data memory (0x03).
+
+Since instruction and data are accessed in parallel, this operation is faster compared to Von Neumann.
+
+---
+
+### ✅ Advantages of Harvard Architecture
+
+| 🔑 Key Advantage           | 💬 Description |
+|----------------------------|----------------|
+| **Parallelism**             | Separate memory for data and instructions allows the CPU to **fetch instructions and access data simultaneously**, which significantly speeds up execution. |
+| **Increased Efficiency**    | With separate memory buses, there is no competition for memory access between instructions and data, reducing the risk of bottlenecks. |
+| **Enhanced Security**       | Programs are less likely to overwrite critical instructions as instructions and data reside in separate memory spaces, leading to more stable and secure systems. |
+| **Real-Time Systems**       | The architecture is ideal for **real-time processing systems**, such as embedded systems, due to its fast and efficient memory access model. |
+
+---
+
+### ⚠️ Limitations of Harvard Architecture
+
+Despite its advantages, the Harvard architecture also has its own set of limitations:
+
+#### 1. **🏗️ Increased Complexity**
+Since the instruction and data memory are physically separated, **designing** and **manufacturing** systems based on Harvard architecture is more complex and expensive. More memory buses and controllers are required to manage the distinct data paths.
+
+#### 2. **📈 Higher Cost**
+The separation of memory increases the **hardware cost** due to the need for more complex circuits. For example, embedded systems that need to minimize cost may still opt for a Von Neumann-like architecture to reduce expenses.
+
+#### 3. **🛠️ Programming Complexity**
+Programming for systems based on Harvard architecture can be more complex because developers need to be aware of **two different memory spaces** and manage instructions and data separately. This also complicates debugging.
+
+---
+
+### 🛠️ Modern Use and Enhancements
+
+Today, the Harvard architecture is commonly used in specialized systems where **speed** and **real-time processing** are critical. The architecture has found its niche in **embedded systems** and **Digital Signal Processing (DSP)** systems. Here's how it's adapted in modern applications:
+
+| Enhancement                  | Description                                                                                                       |
+|------------------------------|-------------------------------------------------------------------------------------------------------------------|
+| **Modified Harvard Architecture** | Modern systems often adopt a **modified** version of the Harvard architecture, where instruction and data paths are separate but can share some memory resources to reduce hardware cost. |
+| **Cache-Based Harvard Architecture** | Systems may employ cache memory, where the CPU can still have separate instruction and data caches while accessing main memory as shared memory (similar to Von Neumann). |
+| **Embedded Systems and DSPs** | Harvard architecture is frequently used in **microcontrollers** and **DSPs** due to their need for efficient parallel processing. |
+
+---
+
+### 📊 Comparison: Harvard vs. Von Neumann
+
+To better understand the difference between the two architectures, let’s compare them in a tabular format:
+
+| Feature                       | Harvard Architecture                                          | Von Neumann Architecture                                        |
+|-------------------------------|---------------------------------------------------------------|-----------------------------------------------------------------|
+| **Memory**                    | Separate for instructions and data                           | Shared between instructions and data                            |
+| **Buses**                     | Separate buses for data and instructions                     | Single bus for both data and instructions                       |
+| **Execution Speed**           | Faster due to simultaneous data and instruction access        | Slower due to shared memory access                              |
+| **Hardware Complexity**       | More complex, requires more resources                        | Simpler and less costly                                         |
+| **Use Case**                  | Embedded systems, DSP, real-time applications                | General-purpose computers                                       |
+
+---
+
+### 🎯 Key Takeaways
+
+- **Parallel Memory Access:** Harvard architecture allows for parallel access to both instructions and data, leading to **faster execution** and more efficient processing.
+- **Hardware Complexity:** The architecture introduces additional hardware complexity due to the need for separate memory spaces and buses.
+- **Use in Embedded Systems:** Harvard architecture is commonly used in **embedded systems** and **real-time computing**, where performance and efficiency are paramount.
+  
+---
+
+### 🖼️ Mermaid Diagram: Visual Representation
+
+```mermaid
+graph TD
+    CPU -->|Control Signals| InstructionMemory
+    CPU -->|Control Signals| DataMemory
+    InstructionMemory -->|Instructions| CPU
+    DataMemory -->|Data| CPU
+    CPU -->|Control Signals| IO
+    IO -->|Data| CPU
+    subgraph CPU
+        ALU --> CU
+    end
+```
+
+In this diagram, you can see that Harvard architecture separates the memory for instructions and data, enabling the CPU to fetch instructions and manipulate data simultaneously, improving overall system performance.
+
+---
+## 2.3 EPIC Architecture: A Comprehensive Breakdown
+
+The **EPIC (Explicitly Parallel Instruction Computing)** architecture is a cutting-edge computing model designed to exploit **instruction-level parallelism (ILP)** to its fullest. Introduced in the late 1990s, it was designed to bridge the gap between traditional sequential execution and parallel processing architectures. EPIC’s most famous implementation is seen in **Intel's Itanium processors**.
+
+Unlike Von Neumann or Harvard architectures, which rely on sequential processing, EPIC is built around the concept of issuing multiple instructions simultaneously by relying on the **compiler** rather than the CPU to identify parallelism. Let’s explore this architecture in-depth to understand how it works, its benefits, and its modern applications.
+
+---
+
+### 🧠 Core Components of EPIC Architecture
+
+| Component                      | Function                                                                                  | Description                                                                                         |
+|---------------------------------|-------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| **Central Processing Unit (CPU)** | Executes multiple instructions in parallel by leveraging **instruction-level parallelism**. | The CPU uses multiple execution units to process several instructions at once.                      |
+| **Compiler**                    | Plays a critical role in analyzing the program code for parallel execution opportunities. | The compiler, not the hardware, is responsible for finding and managing parallelism.                 |
+| **Instruction Cache**           | Stores the instructions to be executed in parallel.                                        | The cache is designed to hold several instructions that can be dispatched to execution units.        |
+| **Execution Units**             | Handles different types of instructions concurrently.                                      | Multiple ALUs and FPUs allow EPIC processors to execute multiple instructions simultaneously.        |
+| **Branch Prediction**           | Advanced branch prediction is used to minimize the impact of branching on instruction parallelism. | Helps reduce pipeline stalls and wasted cycles by predicting the flow of instructions.               |
+
+---
+
+### 🔄 How EPIC Works: Parallel Execution at Its Core
+
+In the EPIC architecture, parallelism is achieved through **explicitly parallel instruction processing**. Unlike **superscalar** architectures, where the CPU determines instruction parallelism dynamically, EPIC relies on **static scheduling** done by the compiler. This means that the CPU can execute more instructions per clock cycle without the need for complex hardware controls.
+
+#### Key Concepts in EPIC:
+
+1. **Instruction Bundles:** The compiler packages multiple instructions that can be executed simultaneously into a single **bundle**. These bundles are dispatched to different execution units.
+2. **Predication:** EPIC uses **predication** to avoid costly branches. Instructions are conditionally executed, eliminating the need for traditional if-then branching, which can slow down pipelines.
+3. **Speculative Execution:** Instructions are speculatively executed based on predictions, allowing the CPU to maintain parallelism even when certain outcomes are uncertain.
+
+---
+
+### ✅ Advantages of EPIC Architecture
+
+| 🔑 Key Advantage           | 💬 Description |
+|----------------------------|----------------|
+| **High Parallelism**        | EPIC can execute a much larger number of instructions per clock cycle compared to traditional architectures by leveraging ILP (Instruction-Level Parallelism). |
+| **Compiler-Centric Design** | By offloading much of the burden of identifying parallel instructions to the compiler, the hardware complexity of the CPU is reduced. This simplifies chip design while maintaining performance. |
+| **Efficient Pipeline Use**  | The combination of **predication** and **speculative execution** helps reduce pipeline stalls and wasted cycles, making more efficient use of available execution units. |
+| **Scalability**             | EPIC is highly scalable. With enough execution units and optimized compilers, it can efficiently handle the growing demand for parallelism in modern applications. |
+
+---
+
+### ⚠️ Limitations of EPIC Architecture
+
+Despite its theoretical strengths, EPIC architecture faces several challenges:
+
+#### 1. **🛠️ Compiler Dependency**
+One of the main drawbacks of EPIC architecture is its reliance on the **compiler** to detect parallelism. Unlike superscalar processors, where the hardware dynamically handles out-of-order execution, EPIC requires extremely advanced compiler technology to extract performance from the architecture. If the compiler fails to optimize the code, the potential for parallelism is not fully utilized.
+
+#### 2. **⚙️ Complexity in Software Development**
+Developers need to write code that can be easily parallelized by the compiler. This adds complexity in developing and debugging software for EPIC processors, as programmers need to understand the underlying parallel structure.
+
+#### 3. **💻 Limited Adoption**
+While EPIC was initially seen as the future of computing, especially for high-performance applications, its adoption has been limited outside niche markets like **scientific computing** and **enterprise-level servers**. The most well-known implementation, Intel's **Itanium**, struggled to gain widespread adoption due to difficulties in compiler support and performance issues in general-purpose applications.
+
+---
+
+### 🛠️ Modern Use and Enhancements
+
+Despite some of the challenges, EPIC architecture has proven useful in specific high-performance environments, particularly those requiring massive parallelism. Here’s how EPIC has evolved:
+
+| Enhancement               | Description                                                                                                     |
+|---------------------------|-----------------------------------------------------------------------------------------------------------------|
+| **Advanced Compilers**     | Modern compilers like **Intel's Itanium Compiler** are more adept at identifying parallel instructions and optimizing performance for EPIC. |
+| **Specialized Processors** | EPIC processors are used in **enterprise servers** and **supercomputers**, where workloads are inherently parallel and performance gains are substantial. |
+| **Hybrid Approaches**      | Some modern systems combine EPIC with **superscalar** techniques, allowing for a more flexible approach to parallel execution. |
+
+---
+
+### 💡 Real-World Application Example
+
+Let’s consider a simple EPIC example where we need to perform multiple independent arithmetic operations simultaneously:
+
+
+Operation 1: Add two numbers (A + B)
+Operation 2: Subtract two numbers (C - D)
+Operation 3: Multiply two numbers (E * F)
+Operation 4: Divide two numbers (G / H)
+
+
+In a typical sequential architecture, these instructions would be executed one after the other. In an EPIC system, the compiler would bundle these operations together and send them to different execution units for **simultaneous execution**:
+
+
+Bundle 1:
+  Instruction 1: Add (A + B) -> Execution Unit 1
+  Instruction 2: Subtract (C - D) -> Execution Unit 2
+  Instruction 3: Multiply (E * F) -> Execution Unit 3
+  Instruction 4: Divide (G / H) -> Execution Unit 4
+
+
+All four operations are executed in parallel, maximizing the CPU’s throughput and reducing execution time.
+
+---
+
+### 📊 Comparison: EPIC vs. Superscalar
+
+To better understand how EPIC compares to other parallel execution models like superscalar architectures, let’s break it down:
+
+| Feature                     | EPIC (Explicitly Parallel Instruction Computing)           | Superscalar Architecture                                   |
+|-----------------------------|------------------------------------------------------------|------------------------------------------------------------|
+| **Parallelism**              | Compiler-directed; instructions are bundled for parallel execution. | Hardware dynamically detects parallel instructions.        |
+| **Execution Units**          | Multiple execution units allow for wide parallelism.       | Multiple execution units, but parallelism is hardware-driven. |
+| **Complexity**               | Complexity in software/compiler design, simpler hardware.  | Complexity in CPU design due to out-of-order execution.      |
+| **Performance**              | High potential performance if the compiler optimizes well. | Good performance, especially in general-purpose applications. |
+| **Use Case**                 | Best suited for enterprise-level servers and high-performance computing. | Used in most general-purpose computing environments.         |
+
+---
+
+### 🎯 Key Takeaways
+
+- **Instruction-Level Parallelism (ILP):** EPIC architecture is designed to exploit ILP by relying on the **compiler** to identify and schedule parallel instructions.
+- **Predication and Speculative Execution:** These techniques reduce the delays associated with branches and enable smoother parallel execution.
+- **Compiler Dependency:** EPIC’s performance is highly dependent on the compiler’s ability to analyze and extract parallelism from the code, making compiler optimization crucial.
+  
+---
+
+### 🖼️ Mermaid Diagram: Visual Representation of EPIC Bundles
+
+```mermaid
+graph TD
+    CPU -->|Control Signals| ExecutionUnit1
+    CPU -->|Control Signals| ExecutionUnit2
+    CPU -->|Control Signals| ExecutionUnit3
+    CPU -->|Control Signals| ExecutionUnit4
+    ExecutionUnit1 -->|Executes| Operation1
+    ExecutionUnit2 -->|Executes| Operation2
+    ExecutionUnit3 -->|Executes| Operation3
+    ExecutionUnit4 -->|Executes| Operation4
+    subgraph CPU
+        ALU --> CU
+    end
+```
+
+This diagram shows how EPIC processors dispatch multiple instructions simultaneously to different execution units, significantly increasing throughput by leveraging **instruction-level parallelism**.
+
+---
 
 ### 3.1 Control Unit (CU)
 ![CU](Pictures/Pasted%20image%2020240912211528.png) <br />
