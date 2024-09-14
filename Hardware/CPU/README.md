@@ -58,7 +58,7 @@ The **CPU** (Central Processing Unit) is the core processing component in a comp
 ![AMD vs Intel](Pictures/Screenshot%202024-09-13%20214455.png)
 
 <br />
-A **Central Processing Unit (CPU)** is the primary component of a computer responsible for executing instructions from programs by performing basic arithmetic, logic, control, and input/output (I/O) operations. Often referred to as the "brain" of the computer, the CPU plays a crucial role in system performance. It interprets and processes data fetched from memory and provides control to other components of the computer, coordinating operations with memory, storage, and peripherals.
+A Central Processing Unit **(CPU)** is the primary component of a computer responsible for executing instructions from programs by performing basic arithmetic, logic, control, and input/output (I/O) operations. Often referred to as the "brain" of the computer, the CPU plays a crucial role in system performance. It interprets and processes data fetched from memory and provides control to other components of the computer, coordinating operations with memory, storage, and peripherals.
 
 ## 2. CPU Architecture Basics
 
@@ -717,15 +717,15 @@ Understanding the difference between **CPU cores** and **threads** is essential 
 
 ## 🔍 **Comparison of CPU Cores and Threads**
 
-| **Aspect**               | **CPU Cores**                                                                                                         | **CPU Threads**                                                                                                                        |
-|--------------------------|-----------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
-| **Definition**            | A core is a **physical processing unit** within a CPU, capable of executing instructions independently.                | A thread is the **smallest unit of programmed instructions** that can be executed by a core.                                             |
-| **Purpose**               | Each core handles its own tasks independently, enabling **parallel processing** of multiple instructions.              | Threads represent tasks within a core. Multiple threads allow a core to handle multiple instructions concurrently through **SMT**.        |
-| **Multitasking**          | Multicore CPUs allow for **true parallelism**, distributing tasks across cores for improved multitasking and performance. | Threads enable **better resource utilization** of a core by managing multiple tasks simultaneously via **Simultaneous Multithreading (SMT)**. |
-| **Common Setup**          | Modern CPUs range from **2 cores** in mobile devices to **16 or more cores** in high-performance desktop and server CPUs. | Typically, **2 threads per core** is the standard, but the number depends on the CPU’s design (e.g., **Intel Hyper-Threading** or **AMD SMT**). |
-| **Performance Impact**    | More cores generally result in better performance for **multithreaded applications**, allowing multiple instructions to run simultaneously. | Threads improve the efficiency of a core, but **performance gains** from multithreading are typically smaller than from additional cores. |
-| **Intel's Approach**      | Intel uses **Hyper-Threading (HT)**, where each core can execute **two threads**, effectively **doubling the thread count**. | In Intel CPUs with Hyper-Threading, the number of threads is typically **2x the number of cores** (e.g., 4 cores = 8 threads).            |
-| **AMD's Approach**        | AMD uses **Simultaneous Multithreading (SMT)** similar to Intel's HT, allowing each core to handle **two threads**.    | AMD’s Ryzen processors also typically have **two threads per core**, leading to **cores * 2 = threads**.                                 |
+| **Aspect**             | **CPU Cores**                                                                                                                               | **CPU Threads**                                                                                                                                                  |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Definition**         | A core is a **physical processing unit** within a CPU, capable of executing instructions independently.                                     | A thread is the **smallest unit of programmed instructions** that can be executed by a core.                                                                     |
+| **Purpose**            | Each core handles its own tasks independently, enabling **parallel processing** of multiple instructions.                                   | Threads represent tasks within a core. Multiple threads allow a core to handle multiple instructions concurrently through **SMT** (Simultaneous Multithreading). |
+| **Multitasking**       | Multicore CPUs allow for **true parallelism**, distributing tasks across cores for improved multitasking and performance.                   | Threads enable **better resource utilization** of a core by managing multiple tasks simultaneously via** SMT**.                                                  |
+| **Common Setup**       | Modern CPUs range from **2 cores** in mobile devices to **24 or more cores** in high-performance desktop and server CPUs.                   | Typically, **2 threads per core** is the standard, but the number depends on the CPU’s design (e.g., **Intel Hyper-Threading** or **AMD SMT**).                  |
+| **Performance Impact** | More cores generally result in better performance for **multithreaded applications**, allowing multiple instructions to run simultaneously. | Threads improve the efficiency of a core, but **performance gains** from multithreading are typically smaller than from additional cores.                        |
+| **Intel's Approach**   | Intel uses **Hyper-Threading (HT)**, where each core can execute **two threads**, effectively **doubling the thread count**.                | In Intel CPUs with Hyper-Threading, the number of threads is typically not **2x the number of cores** (e.g., i9 14900k has 24 cores and 32 threads).             |
+| **AMD's Approach**     | AMD uses **Simultaneous Multithreading (SMT)** similar to Intel's HT, allowing each core to handle **two threads**.                         | AMD’s Ryzen processors also typically have **two threads per core**, leading to **cores * 2 = threads**.                                                         |
 
 ---
 
@@ -734,6 +734,99 @@ Understanding the difference between **CPU cores** and **threads** is essential 
 - **Cores**: Represent the **physical processing units** of a CPU. Each core can handle its own independent tasks, allowing for **true parallelism** in **multicore CPUs**. More cores enable the CPU to divide work across multiple hardware units, which is especially important in multithreaded applications such as **gaming**, **video editing**, and **3D rendering**.
 
 - **Threads**: Represent the **software instructions** that the CPU executes on a core. Threads are a way to improve resource use within each core. By using **Simultaneous Multithreading (SMT)**, a core can handle more than one thread, improving multitasking. However, threads are **not physical units** and thus rely on the core’s resources (e.g., execution units and registers), which must be shared between the threads. This means threads don’t provide as much of a performance boost as adding more cores.
+
+---
+
+# Understanding Performance-Cores (P-cores) vs Efficient-Cores (E-cores) in Modern Hybrid CPU Architectures
+
+Modern CPUs, especially those using hybrid architectures like **Intel's Alder Lake** and beyond, combine two types of cores: **Performance-cores (P-cores)** and **Efficient-cores (E-cores)**. Each type of core serves a distinct purpose and is optimized for specific tasks. This hybrid design allows CPUs to balance **high performance** with **energy efficiency** by distributing workloads appropriately.
+
+## 1. **Performance-Cores (P-cores)**
+
+P-cores are designed to deliver the highest possible performance, focusing on handling demanding and resource-intensive tasks.
+
+- **Design Purpose**: 
+  - Optimized for **high single-thread performance**.
+  - Ideal for **intensive tasks** like gaming, video editing, 3D rendering, and other applications that require substantial processing power.
+
+- **Architecture**:
+  - Based on a more **advanced microarchitecture** to achieve **maximum performance per core**.
+  
+- **Thread Handling**:
+  - Typically support **Simultaneous Multithreading (SMT)**, enabling each core to run **two threads**, improving performance in multi-threaded tasks.
+  
+- **Clock Speeds**:
+  - Operate at **higher clock speeds**, prioritizing performance over power efficiency.
+  
+- **Power Consumption**:
+  - Consume more power and generate more heat due to their performance-oriented design.
+  
+- **Use Cases**:
+  - Best suited for **low-latency, high-performance tasks**, such as running demanding video games, professional software, or large applications that need **maximum processing power**.
+
+```mermaid
+graph TD;
+    P-cores --> Gaming
+    P-cores --> Video_editing
+    P-cores --> Rendering
+    P-cores --> Resource_intensive_tasks
+```
+
+## 2. **Efficient-Cores (E-cores)**
+
+E-cores prioritize **energy efficiency** and are optimized to handle less demanding tasks while keeping power consumption to a minimum.
+
+- **Design Purpose**: 
+  - Optimized for **multi-threaded performance** with a focus on **power efficiency**, ideal for running **background tasks** and light workloads.
+  
+- **Architecture**:
+  - Based on a **simpler and smaller design**, sacrificing some single-core performance for improved power efficiency.
+  
+- **Thread Handling**:
+  - Typically **do not support SMT** and run only **one thread per core**.
+  
+- **Clock Speeds**:
+  - Operate at **lower clock speeds**, conserving energy and reducing heat generation.
+  
+- **Power Consumption**:
+  - Significantly more **power-efficient** than P-cores, ideal for tasks that don’t require high computational power.
+  
+- **Use Cases**:
+  - Best for **background processes** and lightweight tasks like email syncing, file management, or running system services without consuming too much power.
+
+```mermaid
+graph TD;
+    E-cores --> Background_tasks
+    E-cores --> Email_syncing
+    E-cores --> File_management
+    E-cores --> Light_multitasking
+```
+
+## 3. **Hybrid CPU Architecture**
+
+Hybrid architectures combine both **P-cores** and **E-cores** into a single CPU, allowing tasks to be distributed intelligently based on their performance needs. This setup ensures a balance between **high performance** and **energy efficiency**.
+
+- **Task Allocation**:
+  - **P-cores** handle **intensive workloads** where high performance is critical.
+  - **E-cores** handle **lightweight** or **background processes**, allowing the CPU to reduce power consumption when full performance is unnecessary.
+
+- **Benefits**:
+  - The hybrid architecture enhances overall efficiency, allowing the CPU to **ramp up performance** for resource-intensive tasks while **conserving power** during less demanding operations. This approach is especially beneficial in scenarios where **battery life** or **thermal efficiency** is crucial, such as in laptops or mobile devices.
+
+```mermaid
+graph LR;
+    Intensive_tasks --> P-cores;
+    Background_processes --> E-cores;
+    Hybrid_CPU --> Intensive_tasks;
+    Hybrid_CPU --> Background_processes;
+```
+
+### **Key Takeaway**: 
+The hybrid CPU architecture with P-cores and E-cores allows modern CPUs to adapt to a wide range of workloads by offering both **maximum performance** for demanding tasks and **power efficiency** for less intensive ones, ensuring optimal resource utilization and power management. 
+- P-Cores = performance
+- E-Cores = energy
+
+> **INFO**: Hybrid architectures are a key innovation in modern computing, helping balance energy consumption and performance in a wide range of devices, from **high-performance desktop PCs** to **portable, battery-powered laptops**.
 
 ---
 
@@ -810,6 +903,9 @@ graph TD;
 
 **Simultaneous Multithreading (SMT)** is an advanced form of multithreading where a single physical CPU core executes multiple threads **simultaneously**. Instead of switching between threads, SMT enables the CPU to run instructions from different threads **in parallel**, utilizing CPU resources more efficiently.
 
+![Comparison](Pictures/ev8-part2-fig1.gif)
+<br />
+[source](https://www.realworldtech.com/alpha-ev8-smt/)
 - **Benefit**: Keeps more internal CPU components (e.g., ALU, execution units) busy by processing multiple instructions at once.
 
 ---
@@ -1224,10 +1320,6 @@ Processors come in various types, each designed for specific use cases, ranging 
 - [AWS Graviton Processors](https://aws.amazon.com/ec2/graviton/)
 - [Microsoft Azure](https://azure.microsoft.com/en-us/)
 
-# Topics which are not finished in depth
-
-> [!CAUTION]
-I have created this list by AI, as I will further dive into this topic this list will probably change!
 
 ---
 
@@ -1251,6 +1343,9 @@ An **Instruction Set Architecture (ISA)** defines the instructions a CPU can exe
 
 - **RISC (Reduced Instruction Set Computing)**: Prioritizes simplicity and speed.
 - **CISC (Complex Instruction Set Computing)**: Focuses on reducing instruction count by using complex instructions.
+![RISC vs CISC](Pictures/Pasted%20image%2020240914094403.png)
+<br />
+[source](https://www.geeksforgeeks.org/computer-organization-risc-and-cisc/)
 
 ---
 
@@ -1453,7 +1548,7 @@ graph TD
 # 3. CPU Socket Types (LGA, PGA, BGA) 🔌
 
 ![LGA vs PGA vs BGA](Pictures/Pasted%20image%2020240913213744.jpg)
-<br / >
+<br />
 [source](https://vistech.com.pk/knowledge-base/comparison-of-lga-vs-pga-vs-bga/)
 Understanding CPU socket types is vital for anyone involved in building, upgrading, or maintaining computer systems. The socket provides the physical and electrical interface between the processor and the motherboard. This section dives deep into the three primary socket types—**LGA (Land Grid Array)**, **PGA (Pin Grid Array)**, and **BGA (Ball Grid Array)**—detailing their designs, advantages, disadvantages, and typical use cases.
 
@@ -1819,6 +1914,10 @@ graph TD
 
 
 
+# Topics which are not finished in depth
+
+> [!CAUTION]
+I have created this list by AI, as I will further dive into this topic this list will probably change!
 
 
 
