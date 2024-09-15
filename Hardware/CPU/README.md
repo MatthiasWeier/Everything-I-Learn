@@ -2402,6 +2402,329 @@ The right CPU depends on your specific use case. Here’s a quick guide based on
 
 ---
 
+# Integrated Graphics (iGPU)
+
+Integrated Graphics, often referred to as **iGPU** (Integrated Graphics Processing Unit), are a type of GPU that is built directly into the CPU rather than existing as a separate, dedicated card. iGPUs share system memory (RAM) with the CPU to render graphics, making them distinct from **dedicated graphics cards** which have their own memory and higher performance capabilities.
+
+
+![iGPU](Screenshot%202024-09-15%20181735.png)
+- In this you can see the porportion of a iGPU to the rest of the CPU.
+- This could represent a die, I made it with canva means it is not 100% accurate.
+
+---
+
+## 1. **Overview of Integrated Graphics (iGPU)**
+
+Integrated graphics, as the name suggests, are graphics processing units embedded within the CPU. Unlike dedicated GPUs that have separate hardware for processing graphics, iGPUs rely on the CPU and system memory to handle graphical tasks. They are widely used in devices where power efficiency and space savings are more critical than raw performance, such as in laptops, ultra-thin notebooks, and entry-level desktops.
+
+> **INFO:** Integrated Graphics are typically used in non-gaming or less graphically demanding applications but are steadily improving in performance with advancements in modern processors (e.g., Intel Iris Xe, AMD Radeon Vega).
+
+### Example CPUs with iGPU:
+- **Intel Core i3, i5, i7** series processors with Intel UHD or Iris Xe Graphics.
+- **AMD Ryzen** series with integrated Radeon Vega Graphics.
+
+---
+
+## 2. **Use Cases of iGPU**
+
+### 2.1 **Office Productivity**
+iGPUs are commonly used for everyday computing tasks, such as:
+- Word processing, spreadsheets, and presentations.
+- Web browsing and video streaming.
+- Light photo and video editing.
+
+### 2.2 **Casual Gaming**
+While not as powerful as dedicated GPUs, modern iGPUs can handle:
+- Casual gaming titles and older AAA games at lower settings.
+- eSports titles like **League of Legends**, **Counter-Strike: Global Offensive**, and **DOTA 2**.
+
+### 2.3 **Power-Efficient Workloads**
+iGPUs are ideal for:
+- Battery-powered devices like laptops and tablets.
+- Reducing overall power consumption in desktop computers.
+
+---
+
+## 3. **Advantages of iGPU**
+
+### 3.1 **Cost-Efficient**
+iGPUs reduce the need for a dedicated graphics card, leading to overall cost savings, especially in budget builds and laptops.
+
+### 3.2 **Lower Power Consumption**
+Since iGPUs share system resources, they typically consume less power compared to dedicated GPUs, which is advantageous for battery-powered devices.
+
+### 3.3 **Compact Design**
+Without the need for separate hardware, iGPUs enable smaller and lighter form factors in devices like **ultrabooks** and **compact desktop PCs**.
+
+### 3.4 **Lower Heat Output**
+With lower power consumption, iGPUs also generate less heat, which results in quieter and simpler cooling solutions.
+
+---
+
+## 4. **Limitations of iGPU**
+
+### 4.1 **Performance Constraints**
+iGPUs are not suitable for:
+- High-end gaming or rendering tasks.
+- Graphic-intensive applications like 3D modeling, CAD, or professional video editing.
+
+### 4.2 **Shared Memory**
+iGPUs utilize the system’s RAM for graphics processing, which reduces the available memory for other applications. In contrast, dedicated GPUs have their own VRAM.
+
+### 4.3 **Limited Upgrade Path**
+Since iGPUs are embedded in the CPU, upgrading graphics performance requires replacing the entire CPU or switching to a dedicated GPU, which can be costly.
+
+### 4.4 **Thermal Throttling**
+In some laptops or compact devices, an iGPU may face thermal throttling, limiting its performance during prolonged or intensive use.
+
+---
+
+## 5. **Technical Considerations for iGPU Usage**
+
+### 5.1 **Memory Allocation**
+When setting up a system with an iGPU, it is important to understand that part of the system’s RAM is allocated for graphics tasks. Configuring the memory allocation in BIOS/UEFI settings can optimize performance for specific use cases.
+
+```bash
+# Sample BIOS setting for adjusting iGPU memory
+BIOS > Advanced > Chipset Configuration > iGPU Memory Size > [Select Size]
+```
+
+> **NOTE:** Increasing iGPU memory allocation may reduce the amount of RAM available for other system tasks, so it's essential to find a balance based on usage requirements.
+
+### 5.2 **Drivers and Optimization**
+- Keeping drivers up to date can significantly improve the performance and compatibility of iGPUs.
+- Both Intel and AMD regularly release driver updates, optimizing performance for various workloads.
+
+### 5.3 **Multi-Monitor Support**
+Modern iGPUs often support multiple displays, making them suitable for productivity setups with more than one monitor. Ensure your CPU and motherboard combination support the desired number of display outputs.
+
+---
+
+## 6. **Best Practices**
+
+- **Upgrade RAM**: Systems with iGPUs benefit from higher RAM, as iGPUs use system memory for graphics. A minimum of **8GB** is recommended for general use, and **16GB** or more for more demanding applications. (Most of the time the bottleneck is the RAM speed, not capacity)
+- **Enable Dual-Channel Memory**: Dual-channel memory significantly improves iGPU performance by increasing memory bandwidth.
+  
+> **TIP:** Using faster RAM (e.g., 3200 MHz or higher) also enhances iGPU performance.
+
+---
+
+## 7. **Emerging Trends in iGPUs**
+
+- **Ray Tracing Support**: Some modern iGPUs, like those in the **Intel Arc** series, have begun incorporating features such as ray tracing, which was traditionally only available in high-end dedicated GPUs.
+  
+- **Machine Learning**: Both Intel and AMD are incorporating **AI-based optimizations** into their iGPUs, leveraging machine learning to optimize power usage and performance dynamically.
+
+---
+
+## Impact of iGPU on CPU Design and Performance
+
+Integrated Graphics (iGPU) take up a significant portion of the CPU die, which inevitably raises a key architectural question: **"Why not use this space for more CPU cores, larger ALUs, or more registers?"** This section explores the trade-offs that CPU designers face when incorporating an iGPU into a processor and its overall impact on the CPU’s performance.
+
+---
+
+### 1. **How iGPU Utilizes CPU Space**
+
+iGPUs are physically embedded on the same silicon die as the CPU cores. In modern processors, approximately **20-30% of the die space** may be dedicated to the iGPU, depending on the specific CPU model and its targeted use case.
+
+For example:
+- **Intel CPUs**: The space reserved for integrated graphics in processors like **Intel Core i5/i7** often accounts for a substantial part of the chip, particularly in models that use **Intel Iris Xe** graphics.
+- **AMD APUs (Accelerated Processing Units)**: In AMD's **Ryzen G** series, such as the Ryzen 5 5600G, a large part of the die is dedicated to **Radeon Vega graphics**, optimizing the CPU for workloads that include both CPU and GPU tasks.
+
+---
+
+### 2. **Trade-offs in Design: iGPU vs. More CPU Cores**
+
+Allocating die space to an iGPU means fewer resources are available for other CPU components, such as:
+- **Additional CPU cores**.
+- **Larger ALUs (Arithmetic Logic Units)**.
+- **Larger or more numerous CPU registers**.
+- **Or else**
+
+These trade-offs are part of a deliberate design strategy based on the intended use of the processor. Here are the considerations:
+
+### 2.1 **Performance per Watt (Efficiency)**
+iGPUs are typically designed with energy efficiency in mind. For **light computing tasks** (web browsing, video streaming, office applications), the CPU doesn’t need the additional cores or larger ALUs; instead, it benefits from the iGPU’s ability to handle graphical tasks more efficiently than a dedicated GPU.
+
+### 2.2 **Target Market and Use Case**
+- **Consumer Laptops and Ultrabooks**: In devices aimed at general consumers, power efficiency and space-saving designs are critical. In these cases, including an iGPU is more beneficial than adding extra CPU cores, since most users prioritize light gaming, streaming, or everyday productivity over high-end computational tasks.
+  
+- **Mobile and Compact Devices**: For portable devices like **tablets** and **ultrabooks**, the trade-off favors integrated graphics because these devices need to maximize performance within a power-constrained environment. More cores or a larger/better ALU would increase power consumption without providing tangible benefits for most users.
+
+- **Entry-Level Desktop PCs**: For desktop users who don’t need a dedicated GPU for gaming or specialized workloads, an iGPU allows for a cost-effective system without sacrificing the ability to handle standard graphics tasks.
+
+### 2.3 **Cost Considerations**
+Including an iGPU reduces the total system cost by eliminating the need for a separate GPU. This makes processors with integrated graphics more attractive for budget-conscious consumers who do not require extreme performance from their CPU cores.
+
+---
+
+### 3. **Why Not Use iGPU Space for More ALUs or Registers?**
+
+### 3.1 **Diminishing Returns for General Use**
+For many users, adding more ALUs or increasing register space will not significantly impact performance in day-to-day computing tasks. These architectural improvements would primarily benefit **high-performance computing (HPC)** workloads, scientific simulations, or intensive data processing, but they are overkill for consumer-grade tasks like web browsing or light gaming.
+
+### 3.2 **Balancing Graphics and Compute Performance**
+Modern iGPUs have improved to the point where they can handle most consumer-grade tasks without requiring a dedicated GPU. If manufacturers were to eliminate the iGPU and use the space for additional CPU cores or registers, it would push users into purchasing separate graphics cards for even the most basic tasks, reducing the appeal of mainstream, all-in-one solutions.
+
+### 3.3 **Space for Specialized Units**
+Instead of more CPU cores or larger ALUs, modern processors often reserve die space for other specialized processing units, such as:
+- **AVX (Advanced Vector Extensions)**: For faster handling of vector operations used in multimedia, scientific computations, and AI tasks.
+- **AI Acceleration Units**: Increasingly present in modern CPUs to assist with machine learning tasks.
+  
+These specialized units provide more direct benefits for modern workloads than simply increasing the number of ALUs or registers would.
+
+---
+
+### 4. **Implications for Performance**
+
+The inclusion of an iGPU impacts CPU performance in the following ways:
+
+### 4.1 **Thermal Constraints**
+Sharing die space between the CPU and the iGPU means both components must operate within the same thermal envelope. This can lead to **thermal throttling** when both the CPU and the iGPU are under load, reducing overall performance. In a thermally constrained environment (such as in compact laptops), an active iGPU can limit how fast the CPU cores can run and vice versa.
+
+### 4.2 **Shared Resources**
+iGPUs typically share system RAM with the CPU, unlike dedicated GPUs, which have their own memory. This memory-sharing architecture means that high graphics workloads (like 3D rendering or gaming) can reduce the amount of available system memory for the CPU, which may impact multitasking performance.
+
+> **NOTE:** This shared memory setup is often a trade-off in devices where compact form factors and lower power usage are critical, such as laptops and mini-PCs.
+
+---
+
+### 5. **Why Do Manufacturers Continue to Include iGPUs?**
+
+### 5.1 **User Convenience**
+Most consumer and business workloads (office applications, video playback, web browsing, etc.) don’t need the raw power of a dedicated GPU. For these tasks, an iGPU can efficiently handle the graphics workload while freeing up system resources.
+
+### 5.2 **Energy Efficiency**
+For portable devices, power consumption is crucial. iGPUs are much more energy-efficient than dedicated GPUs, which often require additional cooling and more power. Manufacturers prioritize iGPUs to create **longer-lasting, power-efficient** devices.
+
+### 5.3 **Versatility and Cost Savings**
+Including an iGPU provides a flexible, all-in-one solution that allows systems to run without the need for a dedicated GPU. This reduces both the complexity and the cost of the system, making it a preferred solution for entry-level to mid-tier computing devices.
+
+---
+### 6. **How Is It Possible to Have a Picture on a Monitor Without an iGPU or a GPU?**
+
+In some cases, it is possible to display an image on a monitor even without a dedicated GPU (discrete graphics card) or an iGPU (integrated graphics). This scenario typically arises in server environments or specialized computing systems where graphical output is not a primary requirement, but basic display functionality is still needed.
+
+#### 6.1 **Basic Video Output via Motherboard Chipsets**
+
+Many modern motherboards come equipped with basic video output capabilities that allow the system to display a picture without the need for a separate GPU or iGPU. This can be accomplished in several ways:
+
+- **Motherboard Video Output (via Chipset)**: In certain motherboards, the chipset itself can provide basic display output functionality. However, this depends heavily on the CPU being used. If the CPU has no integrated graphics, the motherboard will typically require an external GPU to provide video output. Some high-end server motherboards have basic VGA ports for low-level video display.
+
+    > **NOTE:** This type of basic video output is typically used for server management purposes (BIOS setup, low-resolution system management) rather than for high-resolution graphical displays or gaming.
+
+#### 6.2 **Out-of-Band Management Solutions (IPMI)**
+
+In server environments or workstations without dedicated graphical needs, systems often rely on **out-of-band management solutions** like **IPMI (Intelligent Platform Management Interface)**. These interfaces allow administrators to remotely manage and monitor the server without a need for an onboard iGPU or a dedicated GPU.
+
+- **IPMI with Built-in Graphics**: Many server motherboards include a small, dedicated **management chip** with basic graphical capabilities (often VGA or low-resolution video). This chip is used purely for tasks like monitoring the system’s health, accessing BIOS, and basic remote management.
+
+    > **INFO:** While this is a very low-power, basic graphics solution, it is sufficient for managing a headless server or troubleshooting a system without a high-end display adapter.
+
+#### 6.3 **External Display Adapters (USB to HDMI/DVI)**
+If neither the CPU nor the motherboard provides video output, you can use **external display adapters** that connect via USB to offer basic display capabilities. These adapters often come in **USB-to-HDMI**, **USB-to-DVI**, or **USB-to-VGA** variants. They rely on the system's CPU to process video signals and can output basic video to a monitor.
+
+- **Example Scenario**: You could use a **USB-to-HDMI adapter** to connect a laptop or desktop that lacks both an iGPU and dedicated GPU to an external monitor. However, these devices are designed for basic tasks like productivity work or presentations and are not suited for high-performance graphical needs like gaming or video editing.
+
+#### 6.4 **BIOS/UEFI Firmware Rendering**
+When you boot a system that has neither an iGPU nor a GPU, the **BIOS/UEFI firmware** of the motherboard may still be able to generate very basic video output through legacy VGA or DisplayPort/HDMI connections. This is usually enough to enter the BIOS menu, change system settings, or troubleshoot the system.
+
+- **Low-Resolution Output**: These outputs are typically limited to very low resolutions (e.g., 640x480 or 800x600) and are not suitable for modern high-definition displays or graphical workloads.
+
+#### 6.5 **Network-Based Display Solutions**
+In some enterprise setups, systems without GPUs can still display graphical interfaces using **network-based display protocols** like **VNC (Virtual Network Computing)** or **RDP (Remote Desktop Protocol)**. In this setup, the graphical interface is rendered by a remote system (with a GPU or iGPU), and only the visual output is streamed over the network to the local machine.
+
+- **Example Scenario**: In a headless server environment, a user could connect via VNC from a workstation with a GPU, allowing them to control the server and display its output on a monitor.
+
+---
+
+### 6.6 **Why This Matters**
+
+For users who don't require a powerful graphical interface (such as server administrators or those working with headless systems), being able to display an image without a dedicated GPU or iGPU offers significant flexibility. It allows systems to function without the added cost, complexity, or power consumption associated with dedicated graphics hardware.
+
+This basic video output may be sufficient for:
+- **Server management**.
+- **BIOS/UEFI troubleshooting**.
+- **Low-demand tasks such as remote system control or text-based interfaces**.
+
+However, for users requiring high-resolution displays, gaming, or multimedia processing, an iGPU or dedicated GPU remains essential.
+
+---
+
+By leveraging **chipset-based video output**, **management interfaces like IPMI**, or **external adapters**, it's possible to have basic display functionality on a monitor, even in the absence of both an iGPU and a dedicated GPU.
+
+--- 
+
+### 7. **Performance Gains for Users Who Don’t Need an iGPU (3D Renderers, Gamers, Data Scientists etc.)**
+
+For users who **do not need an iGPU** such as those focused on **3D rendering**, **high-end gaming**, or **computationally intensive tasks** removing the iGPU could free up substantial die space that could be repurposed for more CPU cores, larger cache, or enhanced processing units like a larger ALU, more floating-point units (FPUs), or dedicated units for specialized tasks (e.g., ray tracing or AI acceleration).
+
+#### 7.1 **Potential Performance Gains in 3D Rendering or Gaming**
+In a scenario where the iGPU space is repurposed for more CPU power, the performance improvements could be significant for these tasks:
+
+- **More CPU Cores**: Extra CPU cores would greatly benefit **multi-threaded applications** like 3D rendering software (e.g., **Blender**, **Autodesk Maya**). These applications can utilize every additional core to accelerate the rendering process. The removal of the iGPU could allow for an additional 2-4 CPU cores on modern architectures, which could result in **10-20% faster performance** in heavily multi-threaded tasks depending on the specific workload.
+
+    - **Example**: In Blender's Cycles rendering engine, adding more cores directly correlates to faster rendering times, as more cores can handle more rendering samples simultaneously.
+
+- **Larger ALU and Registers**: For workloads that depend on heavy computational tasks (such as physics simulations in 3D modeling or game engines), increasing the size or number of Arithmetic Logic Units (ALUs) or registers would speed up these calculations. These improvements may offer a **5-10% increase in single-core performance**, which is crucial in tasks like compiling code or complex real-time simulations.
+
+- **Larger CPU Cache**: Repurposing the iGPU space for larger caches (such as L2 or L3 cache) would allow the CPU to store more data closer to the cores, reducing the need for frequent access to slower system RAM. This could result in **reduced latency** and **faster data access** for gaming and rendering tasks, potentially improving overall performance by an additional **5-15%**, particularly in latency-sensitive applications.
+
+#### 7.2 **Dedicated GPU Utilization in Gaming**
+For **high-end gaming**, users typically rely on **discrete GPUs** (such as NVIDIA GeForce or AMD Radeon cards) that are vastly more powerful than iGPUs. A dedicated GPU:
+- Has its own VRAM, allowing it to handle complex textures, shaders, and graphical computations without relying on system RAM.
+- Offers significantly more processing power for rendering frames, handling **ray tracing**, or running **AI-based upscaling technologies** like **NVIDIA DLSS** or **AMD FSR**.
+
+Without the need for an iGPU, users can fully leverage their discrete GPU for graphical workloads, while a more powerful CPU (due to the freed-up space) would handle non-graphical tasks like game physics, AI, and simulations more efficiently.
+
+#### 7.3 **Specialized High-Performance Workloads**
+For those involved in professional 3D rendering, video editing, or software development, CPUs without iGPUs could be optimized for raw computing power. These workloads typically benefit from:
+- **High core counts** for faster parallel processing in rendering.
+- **Better single-thread performance** for tasks like game engine development or real-time simulations.
+- **Enhanced memory bandwidth** through larger caches and more direct access to system RAM.
+
+### 7.4 **Realistic Performance Gains**
+If the space typically reserved for an iGPU were instead used for additional cores, larger ALUs, or enhanced cache, users might experience **10-30% performance improvement** in multi-core tasks such as:
+- **3D rendering** in software like Blender or Autodesk 3ds Max.
+- **Game physics simulations**, which are heavily CPU-bound.
+- **Compiling large projects** in software development.
+
+---
+
+### 7.5 **Why Skip the iGPU?**
+For users who already plan to use a dedicated GPU or require high CPU throughput, the iGPU becomes redundant, and the extra silicon could be better utilized for raw computational resources. CPUs that skip the iGPU (such as Intel's **F-series** processors or AMD's **non-G-series** Ryzen CPUs) are designed with this in mind, often offering more cores or higher clock speeds for a similar price.
+
+In conclusion, for **high-performance users** such as gamers, 3D renderers, or professionals in video editing and development, not having an iGPU can lead to tangible gains in **rendering speed**, **simulation accuracy**, and **overall productivity**, making it a more attractive choice when performance is the primary consideration.
+
+### 7.6. **AMD X-Series and Intel F-Series Processors (no iGPU)**
+
+For users who don't need integrated graphics and plan to use a **dedicated GPU** (discrete graphics card), both **AMD** and **Intel** offer CPU models that omit the iGPU, providing more optimized performance for tasks that rely solely on CPU computation. These models are marketed under specific series: AMD's **X-Series** and Intel's **F-Series** processors.
+
+#### 7.6.1. **AMD X-Series Processors**
+- AMD’s **X-Series** processors, such as the **Ryzen 5 5600X** or **Ryzen 9 5900X**, do not include integrated graphics (iGPU). These CPUs are targeted at enthusiasts, gamers, and professionals who will always use a dedicated GPU for high-performance graphical workloads like 3D rendering or gaming.
+  
+- **Performance Benefits**: Without the need for integrated graphics, AMD focuses on optimizing CPU performance. These processors often have higher clock speeds and more cores compared to their counterparts with integrated graphics (like AMD’s G-Series, which has integrated Radeon Vega iGPU).
+
+  - **Example**: The **Ryzen 9 5900X** offers 12 cores and 24 threads, providing excellent performance for multi-threaded tasks like rendering, video editing, and gaming when paired with a high-end GPU.
+
+#### 7.6.2. **Intel F-Series Processors**
+- Intel’s **F-Series** processors, such as the **Intel Core i5-12400F** or **Core i7-12700F**, also come **without an iGPU**. These CPUs are aimed at users who already plan to use a discrete GPU, offering similar or slightly better price-to-performance ratios compared to their counterparts with integrated graphics.
+  
+- **Cost Efficiency**: By excluding the iGPU, Intel can offer these processors at a lower price point. This makes the **F-Series** attractive for gamers and professionals who want to maximize CPU and GPU performance without paying for unused integrated graphics.
+
+  - **Example**: The **Core i7-12700F** provides 12 cores (8 performance cores and 4 efficiency cores) without the overhead of an iGPU, making it an excellent choice for high-end gaming rigs and workstations paired with powerful discrete GPUs like the NVIDIA RTX or AMD Radeon series.
+
+#### 7.6.3. **Why Choose X-Series or F-Series Processors?**
+- **Performance Focus**: By opting for processors without an iGPU, manufacturers can dedicate more of the CPU’s design and die space to additional cores, higher clock speeds, and cache, improving overall performance in compute-heavy workloads.
+  
+- **Price Savings**: Since these CPUs omit integrated graphics, they are often sold at lower prices compared to their counterparts with an iGPU, allowing users to allocate more of their budget toward a powerful dedicated GPU or other system components.
+
+- **Target Users**: These processors are ideal for **gamers**, **3D artists**, **video editors**, and **software developers** who will be using powerful dedicated GPUs and do not require any integrated graphics capabilities. 
+
+> **Conclusion**: AMD X-Series and Intel F-Series CPUs offer a cost-effective and performance-optimized option for users who plan to rely entirely on discrete graphics cards, making them perfect choices for high-end gaming, rendering, and professional workloads where iGPUs are unnecessary.
+
+
+
 
 
 
@@ -2412,9 +2735,6 @@ The right CPU depends on your specific use case. Here’s a quick guide based on
 > [!CAUTION]
 I have created this list by AI, as I will further dive into this topic this list will probably change!
 
-
-
-5. **Integrated Graphics (iGPU)**
 6. **Pipelining and Superscalar Architectures**
 7. **Data Hazards (RAW, WAR, WAW) and Hazard Avoidance**
 8. **Branch Prediction**
