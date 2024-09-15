@@ -65,7 +65,7 @@ The **CPU** (Central Processing Unit) is the core processing component in a comp
 ![AMD vs Intel](Pictures/Screenshot%202024-09-13%20214455.png)
 
 <br />
-A Central Processing Unit **(CPU)** is the primary component of a computer responsible for executing instructions from programs by performing basic arithmetic, logic, control, and input/output (I/O) operations. Often referred to as the "brain" of the computer, the CPU plays a crucial role in system performance. It interprets and processes data fetched from memory and provides control to other components of the computer, coordinating operations with memory, storage, and peripherals.
+A Central Processing Unit (CPU) is the primary component of a computer responsible for executing instructions from programs by performing basic arithmetic, logic, control, and input/output (I/O) operations. Often referred to as the "brain" of the computer, the CPU plays a crucial role in system performance. It interprets and processes data fetched from memory and provides control to other components of the computer, coordinating operations with memory, storage, and peripherals.
 
 ## 2. CPU Architecture Basics
 [Intel Technology - Architecture All Access - Youtube Playlist](https://www.youtube.com/watch?v=_PELtLdh87Y&list=PL8t1FdN2Tj3ZVAzTY-FvsS0qy-mEfRdoj)
@@ -76,6 +76,7 @@ The **Von Neumann architecture** is the foundation of most modern computers, int
 
 ![Neumann Architecture](Pictures/Von_Neumann_Architecture.svg)
 <br />
+[source](https://en.wikipedia.org/wiki/Von_Neumann_architecture)
 
 ---
 
@@ -169,29 +170,13 @@ Here’s a comparison between the **Von Neumann** and **Harvard Architecture** t
 - **Unified Memory Model** allows the same memory to store both data and instructions, simplifying the system's design.
 - The **Von Neumann bottleneck** is a major limitation of this architecture, but modern systems mitigate this through techniques like caching and parallelism.
   
----
-
-### 🖼️ Mermaid Diagram: Visual Representation
-
-```mermaid
-graph TD
-    CPU -->|Control Signals| Memory
-    CPU -->|Data| Memory
-    Memory -->|Instructions/Data| CPU
-    CPU -->|Control Signals| IO
-    IO -->|Data| CPU
-    subgraph CPU
-        ALU --> CU
-    end
-```
-
-In the diagram above, you can see how the CPU communicates with the memory and I/O devices. The **Control Unit** (CU) manages signals, while the **Arithmetic Logic Unit** (ALU) performs computations.
 
 ---
 
 ## 🖥️ 2.2 Harvard Architecture: A Detailed Breakdown
 ![Harvard Architecture](Pictures/Pasted%20image%2020240912211422.png)
 <br />
+[source](https://en.wikipedia.org/wiki/Harvard_architecture)
 
 The **Harvard architecture** is an alternative computer architecture model that differs from the Von Neumann architecture by having **separate memory spaces** for program instructions and data. This design reduces the contention between the CPU and memory, allowing for more efficient data throughput and improved system performance.
 
@@ -294,24 +279,6 @@ To better understand the difference between the two architectures, let’s compa
 - **Hardware Complexity:** The architecture introduces additional hardware complexity due to the need for separate memory spaces and buses.
 - **Use in Embedded Systems:** Harvard architecture is commonly used in **embedded systems** and **real-time computing**, where performance and efficiency are paramount.
   
----
-
-### 🖼️ Mermaid Diagram: Visual Representation
-
-```mermaid
-graph TD
-    CPU -->|Control Signals| InstructionMemory
-    CPU -->|Control Signals| DataMemory
-    InstructionMemory -->|Instructions| CPU
-    DataMemory -->|Data| CPU
-    CPU -->|Control Signals| IO
-    IO -->|Data| CPU
-    subgraph CPU
-        ALU --> CU
-    end
-```
-
-In this diagram, you can see that Harvard architecture separates the memory for instructions and data, enabling the CPU to fetch instructions and manipulate data simultaneously, improving overall system performance.
 
 ---
 ## 2.3 EPIC Architecture: A Comprehensive Breakdown
@@ -454,6 +421,7 @@ This diagram shows how EPIC processors dispatch multiple instructions simultaneo
 
 ### 3.1 Control Unit (CU)
 ![CU](Pictures/Pasted%20image%2020240912211528.png) <br />
+[source](https://www.geeksforgeeks.org/introduction-of-control-unit-and-its-design/)
 The **Control Unit (CU)** is the central nervous system of the CPU, responsible for coordinating the execution of instructions and managing the flow of data within the processor. It does not perform actual data processing tasks itself but instead oversees the entire operation, ensuring that the CPU components work together seamlessly. Think of the CU being a manager, does not help in the actual Operation, but tells who to do what and when.
 
 
@@ -526,7 +494,7 @@ The CU acts as the **conductor** of the CPU, directing operations and ensuring s
 # ⚙️ 3.2 Arithmetic Logic Unit (ALU)
 
 ![ALU examples](Pictures/Pasted%20image%2020240912211637.png) <br />
-
+[source](https://witscad.com/course/computer-architecture/chapter/arithmetic-logic-unit-design)
 The **Arithmetic Logic Unit (ALU)** is the part of the CPU responsible for executing arithmetic and logical operations. Often called the "computational engine" of the processor, the ALU directly handles the calculations that enable the CPU to process data, while the **Control Unit** directs overall operations.
 
 ---
@@ -833,6 +801,7 @@ graph TD;
 ---
 ### 3.5 Cache Levels (L1, L2, L3, L4)
 ![CPU Cache Levels](Pictures/Pasted%20image%2020240912201911.png) <br />
+[source](https://cs.brown.edu/courses/csci0300/2022/assign/labs/lab4.html)
 # 🧠 CPU Cache: Levels and Importance
 
 **CPU Cache** is a crucial component in modern processors, designed to reduce the time it takes to access frequently used data from **main memory (RAM)**. By storing frequently accessed data closer to the CPU cores, the cache dramatically speeds up the data retrieval process. CPU caches are organized into **multiple levels**, with each level offering a balance between speed, size, and proximity to the CPU cores.
@@ -2283,6 +2252,158 @@ graph TD
 
 ---
 
+## 🚀 CPU Performance Benchmarks
+
+In the world of computing, measuring and comparing the performance of CPUs is crucial for optimizing system performance, selecting hardware, and evaluating processing power for various applications. **CPU performance benchmarks** provide a standardized method to evaluate how well a CPU performs under specific workloads, covering aspects such as speed, efficiency, and multi-core performance. Let’s explore the various methods of benchmarking, common tools, metrics used, and insights into how benchmarks can guide decision-making.
+
+---
+
+### 🧠 What Are CPU Performance Benchmarks?
+
+**CPU benchmarks** are tests designed to evaluate the performance of a central processing unit (CPU) by measuring its ability to handle various tasks. These tasks could range from simple arithmetic operations to complex real-world applications like gaming, video encoding, or machine learning. The results from these benchmarks help to objectively compare CPUs across different brands, models, and architectures.
+
+Benchmarks are divided into two main types:
+
+- **Synthetic Benchmarks:** Predefined tests that simulate typical workloads or stress test the CPU’s capabilities (e.g., Geekbench, Cinebench).
+- **Real-World Benchmarks:** Tests using actual applications to measure performance, such as running a game or rendering a 3D model.
+
+---
+
+### 🔄 How CPU Benchmarks Work?
+
+A typical CPU benchmark involves running a series of operations or instructions designed to push the processor's limits. This often includes:
+
+1. **Arithmetic Operations:** Basic math calculations, logic operations, and number manipulation.
+2. **Floating-Point Operations (FLOPs):** Measure of the CPU’s ability to handle real numbers, essential in graphics and scientific computations.
+3. **Memory Access and Latency:** Tests how efficiently the CPU communicates with RAM and caches.
+4. **Multithreaded Performance:** Evaluates how well the CPU manages multiple tasks simultaneously, leveraging multi-core architectures.
+5. **Power Consumption:** Evaluates performance per watt, a critical metric for energy-efficient systems like laptops and servers.
+
+---
+
+### 🔑 Key Metrics in CPU Benchmarks
+
+| Metric                      | Description                                                                                                  |
+|-----------------------------|--------------------------------------------------------------------------------------------------------------|
+| **Single-Core Performance**  | Measures the processing speed of a single CPU core. Important for applications that don’t use multi-threading. |
+| **Multi-Core Performance**   | Evaluates how well the CPU performs when using all its cores. Critical for multi-threaded applications.       |
+| **Instructions Per Cycle (IPC)** | Indicates how many instructions a CPU can execute per clock cycle, highlighting its efficiency at a given clock speed. |
+| **Clock Speed (GHz)**        | Represents how many cycles per second the CPU can execute, measured in gigahertz (GHz). Faster clock speeds can improve overall performance, but only to a certain extent. |
+| **FLOPs (Floating-Point Operations per Second)** | Measures the CPU's ability to perform calculations with floating-point numbers, which is vital for gaming, AI, and scientific applications. |
+| **Thermal Design Power (TDP)** | Refers to the maximum heat output or power consumption of a CPU under a standard workload, used to gauge efficiency. |
+| **Cache Size**               | Larger caches allow the CPU to store frequently accessed data closer to the processor, reducing latency and improving performance in certain tasks. |
+| **Power Efficiency**         | The ratio of performance to power consumption, important for battery-powered devices like laptops and mobile devices. |
+
+---
+
+### ✅ Popular CPU Benchmarking Tools
+
+Here are some of the most popular benchmarking tools used in the industry for both synthetic and real-world performance evaluations:
+
+| Benchmark Tool        | Type                        | Description                                                                                                                   |
+| --------------------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| **Geekbench**         | Synthetic                   | Measures both single-core and multi-core performance using simulated workloads across multiple platforms.                     |
+| **Cinebench**         | Synthetic & Real-World      | Tests CPU performance using the rendering engine of Cinema 4D, great for evaluating multi-core efficiency.                    |
+| **PassMark**          | Synthetic                   | Provides a comprehensive CPU score based on a variety of simulated tasks, including floating-point math and data compression. |
+| **3DMark**            | Real-World (Gaming Focused) | Evaluates CPU performance in 3D rendering and gaming environments, widely used by gamers.                                     |
+| **PCMark**            | Real-World                  | Focuses on real-world tasks like web browsing, document editing, and video conferencing to assess overall system performance. |
+| **SPEC CPU**          | Synthetic                   | A suite of tests designed to measure CPU-intensive tasks, often used for server-grade and enterprise CPUs.                    |
+| **Blender Benchmark** | Real-World                  | Tests rendering performance using the Blender software, ideal for visual effects artists and 3D modelers.                     |
+| **AIDA64**            | Synthetic                   | Offers memory and CPU benchmarks, often used to test overclocking stability and thermal performance.                          |
+
+---
+
+### 📊 Interpreting Benchmark Results: Single-Core vs. Multi-Core
+
+One of the most critical elements in CPU benchmarks is comparing **single-core** and **multi-core performance**:
+
+- **Single-Core Performance:** Important for applications that rely on sequential processing, such as web browsers, basic office tasks, and older applications that don't utilize multi-threading. High single-core performance translates into faster, more responsive general-use computing.
+- **Multi-Core Performance:** Increasingly important as modern applications, games, and tools (e.g., video rendering, scientific computing, machine learning) leverage multi-threading. Multi-core scores give insight into how well a CPU can handle parallel workloads.
+
+Here’s an example comparison using hypothetical scores:
+
+| Processor Model       | Single-Core Score | Multi-Core Score | Best Use Case                                      |
+| --------------------- | ----------------- | ---------------- | -------------------------------------------------- |
+| **Intel i9-13900K**   | 1850              | 19500            | Excellent for gaming, multi-threaded tasks.        |
+| **AMD Ryzen 9 7950X** | 1780              | 22000            | Best for multi-threaded tasks (rendering, AI).     |
+| **Intel i5-13600K**   | 1650              | 14000            | Great for general use, gaming, moderate workloads. |
+| **Apple M1 Max**      | 1700              | 18000            | Excellent for power efficiency and mobile tasks.   |
+
+---
+
+### 🛠️ Real-World Benchmarks: Gaming, Rendering, and More
+
+While synthetic benchmarks give us a standardized way to measure performance, **real-world benchmarks** are essential for gauging how a CPU will perform under specific workloads. Let’s look at some common real-world benchmarks:
+
+#### 🎮 Gaming Benchmarks
+- Games are generally more reliant on **single-core** performance, though modern titles are increasingly optimized for multi-core processors.
+- Common metrics include **frames per second (FPS)** at different resolutions (1080p, 1440p, 4K).
+- Examples: **Shadow of the Tomb Raider**, **Cyberpunk 2077**, **Red Dead Redemption 2**.
+
+| CPU Model           | Avg FPS @ 1080p | Avg FPS @ 4K   |
+|---------------------|-----------------|----------------|
+| **Intel i9-13900K**   | 180             | 120            |
+| **AMD Ryzen 9 7950X** | 175             | 118            |
+| **Intel i5-13600K**   | 160             | 105            |
+
+#### 🎥 Video Rendering Benchmarks
+- Video rendering performance is directly linked to **multi-core** capabilities.
+- Benchmarks like **Blender** or **Adobe Premiere Pro** tests show how fast a CPU can render videos or 3D models.
+
+| CPU Model           | Blender Render Time (Seconds) | Premiere Pro Export Time (4K, Seconds) |
+|---------------------|-------------------------------|----------------------------------------|
+| **Intel i9-13900K**   | 180                           | 150                                    |
+| **AMD Ryzen 9 7950X** | 165                           | 140                                    |
+| **Apple M1 Max**      | 190                           | 120                                    |
+
+---
+
+### ⚠️ Factors Affecting CPU Benchmark Results
+
+#### 1. **Cooling and Thermal Throttling**
+- CPU performance is often limited by thermal conditions. If the CPU overheats, it throttles down to prevent damage, reducing its benchmark score.
+- Proper cooling (e.g., air or liquid cooling solutions) is essential to maintain peak performance.
+
+#### 2. **Power Delivery**
+- In high-performance CPUs, adequate power delivery from the motherboard and PSU is critical for achieving maximum performance, especially in **overclocked** systems.
+
+#### 3. **Memory and Cache Hierarchy**
+- Faster RAM, larger caches, and high memory bandwidth contribute significantly to overall CPU performance, particularly in tasks like gaming and data-intensive workloads.
+
+#### 4. **Software Optimization**
+- Applications and games optimized for a specific CPU architecture can skew benchmark results. For instance, Apple’s M1 processors perform exceptionally well in tasks where software is optimized for **ARM architecture**.
+
+---
+
+### 📊 CPU Benchmarks: Choosing the Right CPU
+
+The right CPU depends on your specific use case. Here’s a quick guide based on benchmark results and common usage scenarios:
+
+| Use Case                      | Recommended CPU Type                                                                    |
+| ---------------------------------- | --------------------------------------------------------------------------------------- |
+| **General Use (Browsing, Office)** | **Mid-range CPUs** (e.g., Intel i5, AMD Ryzen 5) for balanced performance and cost.     |
+| **Gaming**                     | **High single-core performance** is key, look for **Intel i7/i9** or **AMD Ryzen 7/9**. |
+| **Video Editing/Rendering**    | **Multi-core performance** is crucial. **AMD Ryzen 9** or **Intel i9** with!            
+![Benchmark](Pictures/Screenshot%202024-09-15%20113839.png)
+![Benchmark2](Pictures/Screenshot%202024-09-15%20113922.png)
+- Done with 3DMark on steam
+
+
+---
+
+### 🎯 Key Takeaways
+
+- **Synthetic benchmarks** offer a standardized, repeatable way to compare CPU performance across different tasks and architectures.
+- **Real-world benchmarks** provide more practical insights into how CPUs perform in everyday tasks such as gaming, video editing, and data processing.
+- When choosing a CPU, consider **single-core vs. multi-core performance**, depending on your workload.
+- Benchmarks can be affected by factors such as **cooling, power delivery, and software optimization**.
+- This can be accomplished not only using the provided benchmarking tools, but also by creating a custom script to run any CPU-intensive application specific to your needs. It's important to tailor the tests to match your particular use case for the CPU.
+
+
+---
+
+
+
 
 
 
@@ -2299,10 +2420,8 @@ I have created this list by AI, as I will further dive into this topic this list
 8. **Branch Prediction**
 9. **Cache Coherency & Memory Hierarchy**
 10. **Dual-Channel, Triple-Channel Memory Architecture**
-11. **Simultaneous Multi-Threading (SMT)**
 12. **Parallel Processing and Amdahl’s Law**
 13. **Virtualization Support (VT-x, AMD-V)**
-14. **CPU Performance Benchmarks**
 15. **Thermal Management and Cooling Systems**
 16. **Ring Bus vs. Mesh Topology in CPU Interconnects**
 17. **Ring Buffer Latency and Bandwidth Tuning**
