@@ -2622,7 +2622,7 @@ The right CPU depends on your specific use case. Here’s a quick guide based on
 Integrated Graphics, often referred to as **iGPU** (Integrated Graphics Processing Unit), are a type of GPU that is built directly into the CPU rather than existing as a separate, dedicated card. iGPUs share system memory (RAM) with the CPU to render graphics, making them distinct from **dedicated graphics cards** which have their own memory and higher performance capabilities.
 
 
-![iGPU](Screenshot%202024-09-15%20181735.png)
+![iGPU](Pictures/Screenshot%202024-09-15%20181735.png)
 - In this you can see the porportion of a iGPU to the rest of the CPU.
 - This could represent a die, I made it with canva means it is not 100% accurate.
 
