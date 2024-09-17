@@ -4,8 +4,6 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/MatthiasWeier/Everything-I-Learn?color=blue) 
 ![GitHub last commit](https://img.shields.io/github/last-commit/MatthiasWeier/Everything-I-Learn?color=green) 
 ![GitHub stars](https://img.shields.io/github/stars/MatthiasWeier/Everything-I-Learn?style=social) 
-![GitHub forks](https://img.shields.io/github/forks/MatthiasWeier/Everything-I-Learn?style=social)
-
 
 ---
 
@@ -29,6 +27,8 @@ In my free time, I love to dive deep into various IT-related topics such as:
 - 📊 **Algorithms & Data Structures**: Enhancing problem-solving skills and optimization.
 
 I’m constantly learning and improving my knowledge in IT, and I’m always excited to pick up new skills!
+
+- If you enjoy this repository and learned something new, I’d really appreciate a star! ✨😊
 
 ---
 
