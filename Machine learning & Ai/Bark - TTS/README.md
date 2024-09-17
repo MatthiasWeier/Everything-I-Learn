@@ -185,7 +185,14 @@ if __name__ == "__main__":
 ```bash
 python C:\Path\To\BarkServer.py "Hello, fellow repository explorer! I hope you enjoy this little demo and consider trying out Bark yourself. If you appreciate Bark, don’t forget to give it a star on GitHub! And if you like what you find in my repository, feel free to leave a star here as well." DemoOutput.wav
 ```
-![Demo Output Wav](DemoOutput.webm)
+[DemoOutput.webm](https://github.com/user-attachments/assets/fe827a12-721e-4b2c-bb29-2a4973418256)
+- done by me
+
+[236218842-b9dc253e-05de-49e5-ada9-e714e1e2cbd4.webm](https://github.com/user-attachments/assets/f50fcc16-30e7-423a-be4b-d987deb3bb71)
+- done by [rsxdalv](https://github.com/rsxdalv/tts-generation-webui/tree/main)
+
+
+
 ## More then this
 - I only needed this part of Bark, thats why not more is in the script
 - If you use no voice --> bark generates a random voice --> you can save that random voice as a npz file. (Maybe it's cool?)
