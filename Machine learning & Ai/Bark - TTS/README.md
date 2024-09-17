@@ -185,7 +185,7 @@ if __name__ == "__main__":
 ```bash
 python C:\Path\To\BarkServer.py "Hello, fellow repository explorer! I hope you enjoy this little demo and consider trying out Bark yourself. If you appreciate Bark, don’t forget to give it a star on GitHub! And if you like what you find in my repository, feel free to leave a star here as well." DemoOutput.wav
 ```
-![Demo Output Wav](DemoOutput.wav)
+![Demo Output Wav](DemoOutput.webm)
 ## More then this
 - I only needed this part of Bark, thats why not more is in the script
 - If you use no voice --> bark generates a random voice --> you can save that random voice as a npz file. (Maybe it's cool?)
