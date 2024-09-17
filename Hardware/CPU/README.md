@@ -1259,14 +1259,99 @@ graph TD;
 
 ---
 
-## 🤖 **Simultaneous Multithreading (SMT)**
+# 🤖 **Simultaneous Multithreading (SMT)**
 
-**Simultaneous Multithreading (SMT)** is an advanced form of multithreading where a single physical CPU core executes multiple threads **simultaneously**. Instead of switching between threads, SMT enables the CPU to run instructions from different threads **in parallel**, utilizing CPU resources more efficiently.
+**Simultaneous Multithreading (SMT)** is an advanced CPU architecture feature that enables a single physical core to execute multiple threads **simultaneously**. Unlike traditional multithreading, where the CPU rapidly switches between threads, SMT allows the CPU to execute instructions from multiple threads **in parallel**, making better use of idle resources within the CPU.
+
+By increasing the number of threads a core can handle simultaneously, SMT improves the overall throughput of a system, allowing it to perform more tasks at once, leading to faster and more efficient processing.
+
 
 ![Comparison](Pictures/ev8-part2-fig1.gif)
 <br />
 [source](https://www.realworldtech.com/alpha-ev8-smt/)
-- **Benefit**: Keeps more internal CPU components (e.g., ALU, execution units) busy by processing multiple instructions at once.
+
+---
+
+## 🔧 **How SMT Works**
+
+In traditional single-threaded execution, a CPU core often leaves many internal resources, such as execution units or arithmetic logic units (ALUs), underutilized. These idle resources are wasted when the current thread cannot fully occupy the core's potential, often due to instruction stalls like memory fetches or branch mispredictions.
+
+SMT resolves this inefficiency by allowing **multiple threads to share a single physical core**, each thread leveraging idle resources left unused by the other. The hardware tricks the operating system and applications into thinking there are multiple **logical cores**. These logical cores allow different threads to execute **simultaneously** by effectively using available CPU resources. From a software perspective, it appears that each thread has its own dedicated execution lane, although both threads are still sharing one physical core.
+
+Here’s a simplified explanation of how SMT achieves this:
+1. **Resource Sharing**: When a core is enabled with SMT, it can run instructions from two or more threads. Each thread operates as though it has its own resources, but in reality, both threads share the execution units and ALUs.
+2. **Thread Scheduling**: The CPU dynamically schedules instructions from multiple threads, ensuring that while one thread is stalled waiting for data, another can utilize unused execution units.
+3. **Parallel Execution**: While the threads share execution units, SMT ensures that both can perform work concurrently, allowing for better overall performance.
+
+### Why More Threads than Cores?
+
+Adding more threads than there are physical cores is crucial to achieving higher utilization of the CPU. A single thread cannot always utilize all the resources of a CPU core due to bottlenecks such as memory latency or stalls in instruction pipelines. When you have **more threads**, the CPU can compensate for these idle periods by executing instructions from other threads, thus keeping more of its execution units active.
+
+For example, if a CPU with SMT is running four threads on two physical cores (with two threads per core), each thread can potentially take advantage of unused resources, leading to improved performance. Without SMT, if a thread is stalled, the core might sit idle, wasting valuable computing resources.
+
+---
+
+## ⚙️ **Efficiency of SMT: Performance vs. Die Space**
+
+One of the reasons SMT is such an attractive technology for CPU manufacturers is its **high efficiency** in terms of performance relative to the amount of hardware resources it consumes. Implementing SMT typically takes up around **5% of the CPU die space**, but in return, it can deliver up to a **30% increase in CPU performance** for workloads that can take advantage of multithreading. 
+
+This is an impressive return on investment because:
+- **Minimal additional hardware** is required: SMT primarily involves changes in thread scheduling and resource allocation rather than adding entirely new execution units or physical cores.
+- **Substantial performance gains**: By better utilizing existing CPU resources, SMT allows the CPU to complete more work without a significant increase in complexity or power consumption.
+
+However, the exact performance boost depends heavily on the workload and how well the software can make use of multithreading. In optimized workloads, such as server environments, SMT’s performance boost can be even more significant, while less parallelized tasks may see less of an improvement.
+
+---
+
+## 🚧 **Drawbacks of SMT**
+
+Although SMT brings significant performance benefits in highly parallel workloads, it is not without drawbacks. Some of the challenges include:
+
+### 1. **Software Optimization Challenges**
+SMT does not inherently improve performance unless the software is designed to take advantage of multithreading. Many older software applications, particularly those built before multithreading became widespread, are **single-threaded**. For example, older games like *Crysis* were not optimized for parallel processing, meaning that even though the hardware supports SMT, the software might still bottleneck at a single thread.
+
+In such cases, SMT may offer little to no performance improvement, as the workload cannot be efficiently split across multiple threads. This is common in legacy applications and systems that were designed before the rise of multicore and SMT architectures.
+
+### 2. **Complexity in Software Development**
+Programming software to take full advantage of SMT is difficult. Writing code that efficiently distributes tasks across multiple threads is a **complex task**, requiring developers to understand parallel algorithms, synchronization mechanisms, and how to manage shared resources between threads. Poorly implemented multithreading can lead to issues such as:
+- **Race conditions**: When two threads try to modify shared data at the same time.
+- **Deadlocks**: When threads are waiting on each other to release resources, resulting in a system freeze.
+
+This complexity often results in increased development time and higher costs for ensuring that the software is fully optimized for SMT.
+
+### 3. **Diminishing Returns with SMT**
+While SMT improves resource utilization, the performance gains are not always linear. For example, doubling the number of threads per core does not necessarily result in double the performance. In fact, beyond a certain point, adding more threads can lead to **resource contention**. This is when threads start competing for the same execution units, leading to diminished returns and possibly even performance degradation.
+
+For this reason, the number of threads per core is usually capped to a reasonable limit to prevent too much competition for the core’s internal resources.
+
+---
+
+## ❓ **Why Don’t We Use 4 Threads per Core?**
+
+You might wonder why CPU manufacturers don’t simply increase the number of threads per core to further boost performance. In theory, having 4 threads per core (instead of the usual 2) could better utilize a core’s resources. However, there are several practical reasons why this is rarely implemented:
+
+### 1. **Resource Contention**
+With each additional thread, the competition for shared resources (such as execution units, cache, etc.) increases. If too many threads are running on a single core, they may start competing for these limited resources, leading to **performance bottlenecks** rather than improvements. Balancing the number of threads per core is crucial to avoiding excessive resource contention.
+
+### 2. **Diminished Performance Gains**
+The gains from increasing the thread count per core tend to follow a pattern of diminishing returns. While SMT with 2 threads per core (often referred to as **Hyper-Threading** in Intel CPUs) typically provides a noticeable improvement, moving to 4 threads may offer minimal gains. The hardware must switch between these threads efficiently, but with limited execution units, it is often more practical to increase the number of **physical cores** rather than adding more threads per core.
+
+### 3. **Thermal and Power Constraints**
+Running more threads simultaneously increases the power consumption and heat generated by the CPU. Designing CPUs to handle 4 threads per core requires significantly more power management and cooling solutions, which can be challenging, especially in compact systems. By limiting the thread count to two per core, manufacturers strike a balance between **performance, power efficiency, and thermal output**.
+
+---
+
+## 🔍 **Conclusion**
+
+Simultaneous Multithreading (SMT) is a powerful technology that significantly improves CPU efficiency by allowing multiple threads to execute in parallel on a single core. While it offers clear performance benefits, especially in workloads optimized for multithreading, it is not a universal solution for all software. The complexity of software development, combined with resource limitations, means that SMT can be less effective in certain scenarios, particularly for older or non-parallelized applications.
+
+### Key Points:
+- **SMT improves resource utilization** by executing multiple threads on a single core.
+- It shines in workloads where the software is designed to take advantage of multiple threads.
+- However, programming for SMT is complex, and the performance gains diminish beyond a certain number of threads per core.
+- Practical limits like **resource contention**, **diminishing returns**, and **thermal constraints** prevent CPUs from using more than 2 threads per core in most consumer applications.
+
+For further understanding, watch this [video](https://www.youtube.com/watch?v=uuuO1kivBCs) on SMT technology.
 
 ---
 
@@ -1337,16 +1422,44 @@ TDP is based on **average workloads** rather than peak performance. During high-
 
 ---
 
-## 🛠️ **Factors Affecting TDP**
+Certainly! Here’s the expanded version of the section:
 
-1. **Clock Speed**:
-   - Higher clock speeds lead to more power consumption, resulting in increased **heat generation**. CPUs with higher base and boost frequencies usually have a higher TDP.
-   
-2. **Number of Cores**:
-   - More cores lead to higher TDP because each core requires power to operate, and this increases the heat output. **Multicore processors** tend to have higher TDP ratings.
+---
 
-3. **Architecture and Process Node**:
-   - Newer architectures and smaller process nodes (e.g., **7nm**, **5nm**) are generally more energy-efficient, providing more performance per watt with less heat.
+## 🛠️ **Factors Affecting TDP (Thermal Design Power)**
+
+Thermal Design Power (TDP) is a key metric used to indicate the maximum amount of heat a CPU or GPU is expected to generate under typical workload conditions. Understanding the factors that influence TDP helps in designing efficient cooling solutions and choosing hardware that meets specific power and thermal requirements.
+
+### 1. **Clock Speed (Frequency)**
+   - **Higher clock speeds** directly increase power consumption and heat generation. This is because running the CPU at a higher frequency means it is executing more instructions per second, which requires more electrical energy to sustain. As clock speeds increase, the **dynamic power** consumed by the transistors also rises.
+   - CPUs with **higher base and boost frequencies** typically have a higher TDP because the power consumption increases with frequency. When the CPU boosts to higher frequencies (under load), it requires more power and generates more heat, which is reflected in the TDP rating.
+   - **Power consumption scales non-linearly** with clock speed: Doubling the frequency does not just double the power usage; it often results in much higher increases in heat and power requirements.
+
+### 2. **Number of Cores**
+   - A greater number of cores translates to higher overall power consumption because each core requires **independent power** to operate. More cores also mean that more heat is produced as each core performs computations.
+   - **Multicore processors**, especially those with 6, 8, 16, or more cores, tend to have higher TDP ratings than their dual-core or quad-core counterparts. Each additional core adds to the total power draw and heat output, especially when all cores are utilized simultaneously under heavy workloads like video rendering or scientific simulations.
+   - Even with **core efficiency optimizations**, there is a physical limit to how much power each core can save at high core counts, leading to an overall higher TDP.
+
+### 3. **Architecture and Process Node**
+   - The efficiency of a processor’s **architecture** and the size of its **process node** (measured in nanometers, such as **7nm**, **5nm** and further) are critical factors in determining TDP. 
+     - Newer architectures often introduce improvements in **power efficiency** through better instruction handling, more efficient cache hierarchies, and more intelligent power gating. This means that for the same workload, newer CPUs can perform more operations while consuming less power and generating less heat.
+     - **Smaller process nodes** (such as moving from 14nm to 7nm or 5nm) shrink the physical size of transistors, allowing more transistors to fit in the same area. Smaller transistors require **less power to switch on and off**, which reduces the overall power consumption and thus lowers the heat produced.
+     - CPUs built on **advanced manufacturing processes** benefit from reduced leakage current and lower voltages, allowing them to deliver higher performance per watt, keeping the TDP lower even at high core counts and frequencies.
+     - Conversely, older architectures and larger process nodes (like 14nm or 28nm) tend to be less efficient, with higher power requirements and heat output for the same performance level.
+
+### 4. **Voltage Supply**
+   - The **operating voltage** is another significant contributor to TDP. Power consumption is proportional to the square of the voltage 
+   $$ P \propto V^2 $$
+   - meaning even slight increases in voltage lead to disproportionately larger increases in power consumption and heat generation.
+   - Modern CPUs dynamically adjust their voltage depending on workload and thermal conditions, a process known as **dynamic voltage and frequency scaling (DVFS)**. When under heavy load or running at maximum turbo frequencies, CPUs may require more voltage, which increases the TDP.
+
+### 5. **Power Management and Efficiency Features**
+   - Many modern CPUs implement sophisticated **power management techniques**, such as **core parking**, **dynamic power gating**, and **frequency scaling** to lower their power consumption when full performance isn’t needed. These features reduce idle power consumption but may increase TDP under heavy loads when all cores are fully engaged.
+   - Some processors use **hyper-efficient power states** to throttle down inactive parts of the CPU, such as reducing power to cache or shutting down idle cores, which can temporarily lower TDP. However, TDP reflects the **maximum power draw** under sustained workloads, so these optimizations do not reduce the peak TDP rating of the processor.
+
+### 6. **Thermal Efficiency of Cooling Solutions**
+   - While cooling solutions themselves don’t directly affect the **rated TDP** of a CPU, they influence how well the CPU can sustain high performance. A more efficient cooling solution allows the CPU to run at higher speeds for longer periods without overheating, effectively allowing the CPU to operate closer to its rated TDP for sustained workloads.
+   - **Inefficient cooling systems** may cause the CPU to throttle itself to avoid overheating, which can reduce performance below what the TDP would suggest the processor is capable of under ideal conditions.
 
 ---
 
@@ -1408,58 +1521,10 @@ graph TD;
 > ⚠️ **Remember**: Selecting the right cooling system is just as important as selecting the CPU, especially for high-performance, overclocked, or workstation builds.
 
 ---
-# 🖥️ 8. CPU Generations & Naming Conventions (Intel, AMD)
 
-## 8.1 Intel
+# ⚡🌱Power Consumption and Efficiency
 
-Intel CPUs follow a **generational structure**, where each generation represents improvements in performance, power efficiency, and new features. Intel’s Core series includes:
-- **Core i3**
-- **Core i5**
-- **Core i7**
-- **Core i9**
-
-The **generation** is identified by the **first digit** of the model number. For example, in **Intel Core i7-12700**, the **12** represents a **12th-generation** CPU.
-
-### 🕑🔄 **Intel's Tick-Tock Strategy**
-
-Intel followed a **Tick-Tock** development cycle for several years:
-
-- **Tick**: A **reduction in process size** (e.g., from 32nm to 22nm), leading to better power efficiency and thermal performance.
-- **Tock**: The introduction of a **new microarchitecture**, improving performance and adding new features without reducing the process size.
-
-This strategy ensured a steady pace of innovation, alternating between efficiency and performance gains.
-[Wikipedia Tick-Tock model](https://en.wikipedia.org/wiki/Tick%E2%80%93tock_model)
-
----
-
-## 8.2 AMD
-
-AMD CPUs follow a similar naming convention. AMD’s Ryzen series includes:
-- **Ryzen 3**
-- **Ryzen 5**
-- **Ryzen 7**
-- **Ryzen 9**
-
-As with Intel, the **first digit** of the model number denotes the generation. For instance, **Ryzen 7 5800X** represents a **5th-generation** CPU.
-
-> 🔍 **Tip**: When selecting CPUs, look for the **generation number** and the performance tier (e.g., Ryzen 7 vs Ryzen 5) to assess its performance level.
-
----
-
-# ⚙️ 9. 32-bit vs 64-bit CPUs
-
-A **32-bit CPU** can handle **32 bits of data** at once, whereas a **64-bit CPU** can process **64 bits**. The key difference lies in how much **memory** and **data** the CPU can handle at a time:
-
-- **32-bit CPUs**: Limited to **4GB** of RAM.
-- **64-bit CPUs**: Can address **over 18 exabytes** of RAM (theoretical max).
-
-> 🚀 **Performance**: Modern CPUs are almost exclusively 64-bit, providing better performance, particularly in **memory-intensive applications** like video editing and large datasets.
-
----
-
-# ⚡🌱 10. Power Consumption and Efficiency
-
-Power consumption and efficiency are essential in CPU design, balancing **performance** with **energy usage**. This is particularly important in devices like **mobile phones**, **laptops**, and **datacenters**, where power efficiency directly impacts **battery life** and **cooling requirements**.
+Power consumption and efficiency are essential in CPU design, balancing **performance** with **energy usage**. This is particularly important in devices like **mobile phones**, **laptops** and **datacenters**, where power efficiency directly impacts **battery life** and **cooling requirements**.
 
 ## 🔋 **Key Factors Affecting Power Consumption**
 
@@ -1501,8 +1566,115 @@ graph TD;
 
 > 💡 **Tip**: When choosing a CPU, consider its **TDP rating** and the efficiency of its architecture, especially for tasks like gaming or heavy multitasking.
 
+--- 
+
+# 🖥️ 8. CPU Generations & Naming Conventions (Intel, AMD)
+
+## 8.1 Intel
+
+Intel CPUs follow a **generational structure**, where each generation represents improvements in performance, power efficiency, and new features. Intel’s Core series includes:
+- **Core i3**
+- **Core i5**
+- **Core i7**
+- **Core i9**
+
+The **generation** is identified by the **first digit** of the model number. For example, in **Intel Core i7-12700**, the **12** represents a **12th-generation** CPU.
+
+### 🕑🔄 **Intel's Tick-Tock Strategy**
+
+Intel followed a **Tick-Tock** development cycle for several years:
+
+- **Tick**: A **reduction in process size** (e.g., from 32nm to 22nm), leading to better power efficiency and thermal performance.
+- **Tock**: The introduction of a **new microarchitecture**, improving performance and adding new features without reducing the process size.
+
+This strategy ensured a steady pace of innovation, alternating between efficiency and performance gains.
+[Wikipedia Tick-Tock model](https://en.wikipedia.org/wiki/Tick%E2%80%93tock_model)
+
 ---
-### 11. Basic Overclocking Concept 🚀💻
+
+## 8.2 AMD
+
+AMD CPUs follow a similar naming convention. AMD’s Ryzen series includes:
+- **Ryzen 3**
+- **Ryzen 5**
+- **Ryzen 7**
+- **Ryzen 9**
+
+As with Intel, the **first digit** of the model number denotes the generation. For instance, **Ryzen 7 5800X** represents a **5th-generation** CPU.
+
+> 🔍 **Tip**: When selecting CPUs, look for the **generation number** and the performance tier (e.g., Ryzen 7 vs Ryzen 5) to assess its performance level.
+
+
+---
+
+# ⚙️ 9. **32-bit vs 64-bit CPUs**
+
+The primary distinction between **32-bit** and **64-bit** CPUs lies in the width of the processor's data bus, which determines how much data the CPU can process at one time, and the size of the memory addresses it can use.
+
+## 🚀 **Data Processing Capability**
+- A **32-bit CPU** can handle **32 bits** (4 bytes) of data per clock cycle.
+- A **64-bit CPU** can handle **64 bits** (8 bytes) per clock cycle, allowing for faster and more efficient processing, especially with large data types (e.g., video, encryption).
+
+## 📊 **Memory Addressing**
+- **32-bit CPUs** are limited to addressing **4GB** of RAM due to the maximum number of memory addresses (2³² = 4,294,967,296 addresses).
+- **64-bit CPUs** can theoretically address **over 18 exabytes** of RAM (2⁶⁴ addresses). While operating systems and hardware typically limit this amount, the practical limit is vastly higher than 32-bit systems.
+
+> 💡 **Note**: The 4GB RAM limit on 32-bit CPUs includes **both system memory (RAM)** and **video memory (VRAM)**, which can further constrain usable RAM for applications.
+
+## 🧑‍💻 **Software Compatibility**
+- **32-bit operating systems** are designed for 32-bit CPUs and will not be able to fully utilize 64-bit CPUs or the extra memory they can handle.
+- **64-bit operating systems** can run both **32-bit** and **64-bit applications**. However, 32-bit applications will not gain performance improvements from the 64-bit architecture.
+- Many **modern applications** are built specifically for **64-bit** environments to take advantage of the additional memory and performance optimizations.
+
+## 🔍 **Security Features**
+- **64-bit processors** include advanced security features such as:
+  - **Data Execution Prevention (DEP)**: Helps protect against buffer overflow attacks.
+  - **Address Space Layout Randomization (ASLR)**: Randomizes memory addresses, making it harder for malicious software to predict memory locations.
+  - **Kernel Patch Protection**: Prevents malicious modification of the kernel.
+
+These security features are often more robust or only available in **64-bit** operating systems and applications.
+
+## 🛠️ **Performance and Efficiency**
+- **64-bit CPUs** are not just about handling more memory; they also enable better performance in **memory-intensive** tasks, such as:
+  - **Video editing**.
+  - **Large database operations**.
+  - **Scientific computations**.
+  - **Gaming** (particularly with large textures and data sets).
+
+- **32-bit CPUs** can be sufficient for **basic tasks** like browsing, word processing, or older software, but most modern applications, especially in productivity, scientific computing, and gaming, benefit from the extra performance and memory addressing capabilities of 64-bit CPUs.
+
+> **Example**: Applications such as **Adobe Premiere Pro**, **AutoCAD**, or **large spreadsheet operations** in **Microsoft Excel** perform significantly better in 64-bit environments due to the ability to utilize more RAM and process larger chunks of data.
+
+## ⚠️ **Backward Compatibility**
+- **32-bit applications** can still run on **64-bit systems**, but the reverse is not true: **64-bit applications** cannot run on a **32-bit CPU** or operating system.
+- While **64-bit operating systems** generally support legacy **32-bit** software, some very old 16-bit applications (from the DOS era, for example) may not run without **emulation software**.
+
+## 💻 **Operating System Considerations**
+- Modern operating systems like **Windows**, **Linux**, and **macOS** offer **64-bit versions** that take full advantage of 64-bit CPUs.
+- If you're running a 64-bit CPU, it’s recommended to use a **64-bit OS** to fully unlock the hardware's potential.
+
+---
+
+### 🔍 **Key Differences Summary**:
+
+| **Feature**          | **32-bit CPU**                | **64-bit CPU**                 |
+|----------------------|-------------------------------|--------------------------------|
+| **Data Processing**   | 32 bits per cycle             | 64 bits per cycle              |
+| **Memory Limit**      | 4GB max                       | 18 exabytes (theoretical max)  |
+| **Operating System**  | 32-bit OS only                | 64-bit OS, also runs 32-bit apps |
+| **Performance**       | Lower, suitable for basic tasks | Better for memory-intensive apps |
+| **Security**          | Fewer advanced features       | More advanced security features |
+
+---
+
+### ❓ **Why Upgrade to a 64-bit System?**
+- **Future-proofing**: Most modern software and operating systems are optimized for 64-bit, meaning that staying with 32-bit hardware or OS limits your ability to use newer technology.
+- **Better Performance**: If you run **intensive applications** (e.g., games, multimedia editing), 64-bit hardware and software will give you significantly better performance, especially with more than **4GB** of RAM.
+- **Security**: The security enhancements in **64-bit architectures** are crucial for protecting modern systems from vulnerabilities.
+
+
+---
+### 10. Basic Overclocking Concept 🚀💻
 
 **Overclocking** is the practice of pushing a CPU's clock speed beyond its manufacturer-specified limits to increase performance. This technique is popular among **enthusiasts**, **gamers**, and **content creators** who want to extract extra performance from their systems, particularly in tasks such as gaming, video editing, and 3D rendering.
 
@@ -1546,13 +1718,13 @@ graph TD;
 
 Here's an improved and structured version of the "Types of Processors" section, complete with visual enhancements, comparison tables, and clear organization:
 
-# 🧠 12. Types of Processors
+# 🧠 11. Types of Processors
 
 Processors come in various types, each designed for specific use cases, ranging from high-performance desktops to power-efficient mobile devices. Understanding the key characteristics of each processor type helps in selecting the right CPU for specific workloads.
 
 ---
 
-## 12.1 Desktop Processors 🖥️
+## 11.1 Desktop Processors 🖥️
 
 **Desktop CPUs** are the most common type of processor found in personal computers and workstations. These processors are designed to provide a balance between **performance**, **power consumption**, and **heat generation**, making them suitable for diverse tasks such as gaming, content creation, and office work. Desktop processors generally deliver **better single-core performance**, ideal for applications that rely on single-threaded tasks like most desktop apps and games.
 
@@ -1572,7 +1744,7 @@ Processors come in various types, each designed for specific use cases, ranging 
 
 ---
 
-## 12.2 Server Processors 🏢
+## 11.2 Server Processors 🏢
 
 **Server CPUs** are designed for enterprise-level use in **data centers**, **cloud computing**, and other high-performance environments. These processors focus on **stability**, **high core counts**, and **scalability** to handle massive parallel workloads, ensuring efficient resource management in multi-user or virtualized environments.
 
@@ -1594,7 +1766,7 @@ Processors come in various types, each designed for specific use cases, ranging 
 
 ---
 
-## 12.3 Mobile Processors 📱💻
+## 11.3 Mobile Processors 📱💻
 
 **Mobile CPUs** are designed for portable devices like **smartphones**, **tablets**, and **laptops**, where power efficiency and heat management are critical. Mobile processors aim to deliver enough performance for daily tasks while maintaining long **battery life** and managing heat in compact form factors. Mobile processors are often based on **ARM architecture** but may also include **x86-based** designs for laptops.
 
