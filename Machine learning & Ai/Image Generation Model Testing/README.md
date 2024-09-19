@@ -142,6 +142,18 @@ Each model performed differently in terms of time and accuracy. Future testing c
 
 Feel free to test these models yourself and adapt the prompts to your needs.
 
+
+## Paired with KlingAI
+- Used [KlingAI](https://www.klingai.com/) with this prompt:
+	Describe a mystical, floating island with a large, ancient tree at its center. The island hovers above the clouds with a small waterfall flowing off its edge, surrounded by a serene, pastel sunset. Two figures stand near the tree, gazing out at the horizon. Another figure, holding a staff, watches from a distant cliff. Birds glide through the sky, adding a sense of peace and wonder to the scene. Narrate the story of this land, its history, and the purpose of the people in this world.
+
+![KlingAI](KlingAI/High_Performance_Describe_a_mystical__floating_is.mp4)
+- For the technology right now I believe this is great. In the future we will see much longer generated videos.
+- Just look at [SoraAI](https://openai.com/index/sora/) when this launches it hopefully will be better then KlingAI
+- There is also a [OpenSource variant](https://github.com/hpcaitech/Open-Sora) for this image to video or text to video stuff
+- In the future we might can make our own little short movies. Isn't that crazy?
+  Just like that, Back to the Future Part 4
+
 ---
 
 _Made by: Weier Matthias_  

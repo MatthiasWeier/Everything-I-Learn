@@ -1420,9 +1420,6 @@ TDP is based on **average workloads** rather than peak performance. During high-
 - **Intel Core i9-13900K**: 125W TDP (may peak higher under load).
 - **AMD Ryzen 9 7950X**: 170W TDP (can exceed this under heavy workloads).
 
----
-
-Certainly! Here’s the expanded version of the section:
 
 ---
 
