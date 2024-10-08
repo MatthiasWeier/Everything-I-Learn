@@ -1,0 +1,1 @@
+I am german. The stuff I learn in school is in german. That's why I have some notes on german only. I don't suggest learning it in a different language then english. But my school want's it like that and I want the good grades :).
