@@ -8,16 +8,21 @@
 ## 2. Geschichte der Rechentechnik:
 **Frühe Hilfsmittel**: Die ersten Rechenhilfsmittel wie der Abakus wurden im Altertum entwickelt. Der Abakus war ein mechanisches Gerät zur Durchführung von Grundrechenarten und wird als einer der ersten "Digitalrechner" betrachtet.
 
+![Abakus](Akabus.png)
+(AI generated picture of an Abakus)
+
 **Algorithmen und Zahlen**: Der persische Mathematiker Muhammad ibn Musa al-Khwarizmi schrieb im 9. Jahrhundert das Werk, das das Dezimalsystem und die Grundlage der Algorithmen (abgeleitet von seinem Namen) beschreibt. Auch Fibonacci trug zur Verbreitung des Dezimalsystems in Europa bei.
 
 **Mechanische Rechenmaschinen**:
-- Blaise Pascal entwickelte 1642 die Pascaline, eine der ersten mechanischen Rechenmaschinen, die addieren und subtrahieren konnte.
-- Gottfried Wilhelm Leibniz entwarf in den 1670er Jahren eine Rechenmaschine, die auf dem binären Zahlensystem basierte. Seine Ideen zur binären Arithmetik gelten als Grundlage der modernen Informatik.
-- Charles Babbage konzipierte den ersten mechanischen Computer, die Difference Engine und später die Analytical Engine. Diese Maschine enthielt grundlegende Komponenten eines modernen Computers, wie eine Zentraleinheit und einen Speicher.
-- Ada Lovelace war die erste, die erkannte, dass eine Maschine wie Babbages Analytical Engine nicht nur zur Berechnung, sondern zur Verarbeitung allgemeiner Informationen verwendet werden konnte. Ihr Programm zur Berechnung der Bernoulli-Zahlen wird als das erste Computerprogramm der Geschichte betrachtet.
+- **Blaise Pascal** entwickelte 1642 die Pascaline, eine der ersten mechanischen Rechenmaschinen, die addieren und subtrahieren konnte.
+- **Gottfried Wilhelm Leibniz** entwarf in den 1670er Jahren eine Rechenmaschine, die auf dem binären Zahlensystem basierte. Seine Ideen zur binären Arithmetik gelten als Grundlage der modernen Informatik.
+- **Charles Babbage** konzipierte den ersten mechanischen Computer, die Difference Engine und später die Analytical Engine. Diese Maschine enthielt grundlegende Komponenten eines modernen Computers, wie eine Zentraleinheit und einen Speicher.
+- **Ada Lovelace** war die erste, die erkannte, dass eine Maschine wie Babbages Analytical Engine nicht nur zur Berechnung, sondern zur Verarbeitung allgemeiner Informationen verwendet werden konnte. Ihr Programm zur Berechnung der Bernoulli-Zahlen wird als das erste Computerprogramm der Geschichte betrachtet.
 
 ## 3. Entstehung moderner Computer:
 - **Hermann Hollerith** entwickelte das Lochkartenverfahren, das 1890 erstmals bei der US-Volkszählung angewendet wurde. Dieses Verfahren war eine wichtige Grundlage für spätere Entwicklungen im Bereich der Datenspeicherung und -verarbeitung.
+![Lochkarte](Lochkarte.jpg)
+(source: https://commons.wikimedia.org/wiki/File:Lochkarte_FORTRAN.jpg)
 - **Konrad Zuse**: Zuse baute 1938 die Z1, einen mechanischen Computer. 1941 stellte er die Z3 vor, die als erster funktionsfähiger programmierbarer Computer der Welt gilt. Diese arbeitete mit binärer Gleitpunktarithmetik und war programmierbar.
 - **Relaisrechner**: In den USA baute Howard Aiken den Mark I, der für militärische Berechnungen eingesetzt wurde, während in Deutschland Konrad Zuse an der Weiterentwicklung seiner Maschinen arbeitete.
 - **Elektronenröhrenrechner**: Mit der Entwicklung der Elektronenröhre als Schaltelement gelang der Schritt zu deutlich schnelleren Computern. Der bekannteste Vertreter dieser Ära ist der ENIAC (1946), der für ballistische Berechnungen verwendet wurde und über 18.000 Elektronenröhren verfügte.
@@ -45,6 +50,10 @@ Tim Berners-Lee erfand das World Wide Web (WWW), indem er die ersten Webbrowser 
 - **Grace Hopper**: Entwickelte den ersten Compiler und war maßgeblich an der Entwicklung von COBOL beteiligt. Sie prägte den Begriff "debugging", als sie einen Fehler (eine Motte) in einem Computer entdeckte.
 - **Donald Knuth**: Autor der Buchreihe _The Art of Computer Programming_, ein Standardwerk der Informatik. Er entwickelte das Textsatzsystem TEX und gilt als Begründer der algorithmischen Analyse.
 - **Alan Turing**: Begründer der theoretischen Informatik und der Turing-Maschine, einem Modell eines universellen Computers. Er spielte eine entscheidende Rolle bei der Entschlüsselung des Enigma-Codes im Zweiten Weltkrieg.
+
+Turing machine:
+![Turing Machine](TuringMachine.jpg)
+(source: https://commons.wikimedia.org/wiki/File:TuringBombeBletchleyPark.jpg)
 
 ---
 ## 1. Begriff der Wissenschaft:
